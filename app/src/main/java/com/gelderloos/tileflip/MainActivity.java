@@ -1,12 +1,15 @@
 package com.gelderloos.tileflip;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 
-import com.gelderloos.tileflip.adapters.TileListRecyclerViewAdapter;
+import com.gelderloos.tileflip.adapters.TileRecyclerViewAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     SharedPreferences preferences;
     List<Tile> tiles = null;
-    TileListRecyclerViewAdapter adapter;
+    TileRecyclerViewAdapter adapter;
 
 
     private int easyMatchPoint = 50, medMatchPoint = 75, hardMatchPoint = 100, noMatchPenalty = -10;
@@ -30,10 +33,11 @@ public class MainActivity extends AppCompatActivity {
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         setUpNewGameButton();
-        setUpTileBoard();
+        generateTiles();
+        setUpTileRecyclerView();
     }
 
-    private class Tile {
+    public class Tile {
         private String tileId;
         private String tileValue;
 
@@ -45,10 +49,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void setUpNewGameButton() {
 //        get button & add click listener
-    }
-
-    private void setUpTileBoard() {
-        generateTiles();
     }
 
     private void generateTiles() {
@@ -82,5 +82,13 @@ public class MainActivity extends AppCompatActivity {
         for(int i = 1; i <= tilesArray.length; i++) {
             tiles.add(new Tile("tile" + i, "tile" + tilesArray[i - 1]));
         }
+    }
+
+    private void setUpTileRecyclerView() {
+        RecyclerView tileRecyclerView = findViewById(R.id.mainTileRecyclerView);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        tileRecyclerView.setLayoutManager(layoutManager);
+        adapter = new TileRecyclerViewAdapter(tiles, this);
+        tileRecyclerView.setAdapter(adapter);
     }
 }
