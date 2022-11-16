@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setUpTileRecyclerView() {
         RecyclerView tileRecyclerView = findViewById(R.id.mainTileRecyclerView);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(MainActivity.this,4);
         tileRecyclerView.setLayoutManager(layoutManager);
         adapter = new TileRecyclerViewAdapter(tiles, this);
         tileRecyclerView.setAdapter(adapter);
