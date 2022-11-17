@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,7 +32,8 @@ public class TileRecyclerViewAdapter extends RecyclerView.Adapter<TileRecyclerVi
 
     @Override
     public void onBindViewHolder(@NonNull TileViewHolder holder, int position) {
-
+        ImageView tileBackImageView = holder.itemView.findViewById(R.id.imgViewTileBack);
+        tileBackImageView.setImageResource(R.drawable.tileback);
     }
 
     @Override

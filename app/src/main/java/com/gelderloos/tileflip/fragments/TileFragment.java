@@ -10,35 +10,20 @@ import android.view.ViewGroup;
 
 import com.gelderloos.tileflip.R;
 
-public class Tile extends Fragment {
+public class TileFragment extends Fragment {
 
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String TILEID = "tileId";
-    private static final String TILEVALUE = "tileValue";
-
-    private String mTileId;
-    private String mTileValue;
-
-    public Tile() {
+    public TileFragment() {
         // Required empty public constructor
     }
 
-    public static Tile newInstance(String param1, String param2) {
-        Tile fragment = new Tile();
-        Bundle args = new Bundle();
-        args.putString(TILEID, param1);
-        args.putString(TILEVALUE, param2);
-        fragment.setArguments(args);
+    public static TileFragment newInstance(String param1, String param2) {
+        TileFragment fragment = new TileFragment();
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mTileId = getArguments().getString(TILEID);
-            mTileValue = getArguments().getString(TILEVALUE);
-        }
     }
 
     @Override
