@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         ImageView testImageViewFront = findViewById(R.id.mainTestImageImageViewFront);
         ImageView testImageViewBack = findViewById(R.id.mainTestImageImageViewBack);
         testImageViewFront.setOnClickListener(view -> {
-            flipTile(this,testImageViewFront,testImageViewBack);
+            flipTile(this,testImageViewBack,testImageViewFront);
         });
     }
 
@@ -109,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
         flipInAnimatorSet.setTarget(visibleView);
         flipOutAnimatorSet.start();
         flipInAnimatorSet.start();
+//        invisibleView.setVisibility(View.GONE);
 //        need java version of flipInAnimatorSet.doOnEnd { invisibleView.gone() }
 
     }

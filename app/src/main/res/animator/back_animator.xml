@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <set xmlns:android="http://schemas.android.com/apk/res/android">
-    <objectAnimator
-        android:valueFrom="1.0"
-        android:valueTo="0.0"
-        android:propertyName="alpha"
-        android:duration="0"
-        />
+
     <objectAnimator
         android:valueFrom="180"
         android:valueTo="0"
@@ -20,5 +15,21 @@
         android:propertyName="alpha"
         android:startOffset="500"
         android:duration="0"
+        />
+    <!--    Rotates on Y axis over 1000ms -->
+    <objectAnimator
+        android:valueFrom="0"
+        android:valueTo="180"
+        android:propertyName="rotationY"
+        android:startOffset="2000"
+        android:duration="1000"
+        />
+    <!--    Becomes visible halfway through rotation -->
+    <objectAnimator
+        android:valueFrom="1.0"
+        android:valueTo="0.0"
+        android:propertyName="alpha"
+        android:startOffset="2500"
+        android:duration="1"
         />
 </set>
