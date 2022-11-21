@@ -7,6 +7,12 @@
     tools:context=".fragments.TileFragment">
 
     <ImageView
+        android:id="@+id/imgViewTileFront"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/tileback" />
+
+    <ImageView
         android:id="@+id/imgViewTileBack"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
