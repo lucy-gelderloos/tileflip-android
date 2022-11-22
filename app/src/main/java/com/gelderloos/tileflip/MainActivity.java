@@ -58,12 +58,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void generateTiles() {
-//      create an ArrayList of all possible tile values
+        //      create an ArrayList of all possible tile values
         ArrayList<Integer> possibleValues = new ArrayList<>();
         for(int i = 1; i <= maxTiles; i++) {
             possibleValues.add(i);
         }
-//      randomly select which tiles will be on the board and add two of each to the tilesArray
+        //      randomly select which tiles will be on the board and add two of each to the tilesArray
         ArrayList<Integer> tilesArray = new ArrayList<>();
         for(int i = 0; i < (difficulty / 2); i++) {
             int randIndex = (int) Math.floor(Math.random() * possibleValues.size());
@@ -71,23 +71,19 @@ public class MainActivity extends AppCompatActivity {
             tilesArray.add(possibleValues.get(randIndex));
             possibleValues.remove(randIndex);
         }
-        System.out.println(tilesArray);
-//      shuffle the tilesArray
+        //      shuffle the tilesArray
         int len = tilesArray.size();
         int j, temp;
         while(len > 0) {
             len--;
             j  = (int) Math.floor(Math.random() * len);
-            System.out.println(j);
             temp = tilesArray.get(len);
             tilesArray.set(len,tilesArray.get(j));
             tilesArray.set(j,temp);
-            System.out.println(tilesArray);
         }
-//        System.out.println(tilesArray);
         //      create list of Tiles
         for(int i = 1; i <= tilesArray.size(); i++) {
-            tiles.add(new Tile("tile" + i, "tile" + tilesArray.get(i - 1)));
+            tiles.add(new Tile(i, "tile" + tilesArray.get(i - 1)));
         }
     }
 

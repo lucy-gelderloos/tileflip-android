@@ -1,17 +1,21 @@
 package com.gelderloos.tileflip;public class Tile {
-    private String  tileId;
+    private int  tileId;
     private String tileValue;
+    private boolean flipped;
+    private boolean matchFound;
 
-    Tile(String tileId, String tileValue) {
+    Tile(int tileId, String tileValue) {
         this.tileId = tileId;
         this.tileValue = tileValue;
+        this.flipped = false;
+        this.matchFound = false;
     }
 
-    public String getTileId() {
+    public int getTileId() {
         return tileId;
     }
 
-    public void setTileId(String tileId) {
+    public void setTileId(int tileId) {
         this.tileId = tileId;
     }
 
@@ -21,5 +25,21 @@ package com.gelderloos.tileflip;public class Tile {
 
     public void setTileValue(String tileValue) {
         this.tileValue = tileValue;
+    }
+
+    public boolean isFlipped() {
+        return flipped;
+    }
+
+    public void setFlipped(boolean flipped) {
+        this.flipped = flipped;
+    }
+
+    public boolean isMatchFound() {
+        return matchFound;
+    }
+
+    public void setMatchFound(boolean matchFound) {
+        this.matchFound = matchFound;
     }
 }
