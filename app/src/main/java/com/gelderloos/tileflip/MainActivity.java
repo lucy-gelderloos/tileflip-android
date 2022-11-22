@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
@@ -25,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences preferences;
     List<Tile> tiles = null;
     TileRecyclerViewAdapter adapter;
-    String[] difficultyArr = new String[]{"16","24","36"};
+    String[] difficultyArr = new String[]{"Easy","Medium","Hard"};
+    Spinner difficultySpinner = null;
 
     private int easyMatchPoint = 50, medMatchPoint = 75, hardMatchPoint = 100, noMatchPenalty = -10;
     private int maxTiles = 18;
@@ -41,12 +43,12 @@ public class MainActivity extends AppCompatActivity {
 
         setUpNewGameButton();
         setUpDifficultySpinner();
-        generateTiles();
-        setUpTileRecyclerView();
+//        generateTiles();
+//        setUpTileRecyclerView();
     }
 
     private void setUpDifficultySpinner() {
-        Spinner difficultySpinner = findViewById(R.id.spinnerDifficultySelectorMain);
+        difficultySpinner = findViewById(R.id.spinnerDifficultySelectorMain);
         difficultySpinner.setAdapter(new ArrayAdapter<>(
                 this,
                 androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
@@ -55,7 +57,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setUpNewGameButton() {
-//        get button & add click listener
+        Button newGameButton = findViewById(R.id.buttonNewGameMain);
+        newGameButton.setOnClickListener(view -> {
+            String selectedDifficulty = difficultySpinner.getSelectedItem().toString();
+            switch (selectedDifficulty) {
+                case "Easy": difficulty = 16;
+                break;
+                case "Medium": difficulty = 24;
+                break;
+                case "Hard": difficulty = 36;
+                break;
+                default: difficulty = 24;
+            }
+            generateTiles();
+            setUpTileRecyclerView();
+        });
     }
 
     private void generateTiles() {
