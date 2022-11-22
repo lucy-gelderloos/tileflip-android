@@ -41,29 +41,20 @@ public class MainActivity extends AppCompatActivity {
         setUpNewGameButton();
         generateTiles();
         setUpTileRecyclerView();
-        setUpTestImage();
     }
 
-    public static class Tile {
-        String tileId;
-        String tileValue;
-
-        Tile(String tileId, String tileValue) {
-            this.tileId = tileId;
-            this.tileValue = tileValue;
-        }
-    }
+//    public static class Tile {
+//        String tileId;
+//        String tileValue;
+//
+//        Tile(String tileId, String tileValue) {
+//            this.tileId = tileId;
+//            this.tileValue = tileValue;
+//        }
+//    }
 
     private void setUpNewGameButton() {
 //        get button & add click listener
-    }
-
-    private void setUpTestImage() {
-        ImageView testImageViewFront = findViewById(R.id.mainTestImageImageViewFront);
-        ImageView testImageViewBack = findViewById(R.id.mainTestImageImageViewBack);
-        testImageViewFront.setOnClickListener(view -> {
-            flipTile(this,testImageViewBack,testImageViewFront);
-        });
     }
 
     private void generateTiles() {
@@ -80,41 +71,28 @@ public class MainActivity extends AppCompatActivity {
             tilesArray.add(possibleValues.get(randIndex));
             possibleValues.remove(randIndex);
         }
+        System.out.println(tilesArray);
 //      shuffle the tilesArray
         int len = tilesArray.size();
         int j, temp;
         while(len > 0) {
             len--;
             j  = (int) Math.floor(Math.random() * len);
-            temp = tilesArray.size();
+            System.out.println(j);
+            temp = tilesArray.get(len);
             tilesArray.set(len,tilesArray.get(j));
             tilesArray.set(j,temp);
+            System.out.println(tilesArray);
         }
-//      create list of Tiles
+//        System.out.println(tilesArray);
+        //      create list of Tiles
         for(int i = 1; i <= tilesArray.size(); i++) {
             tiles.add(new Tile("tile" + i, "tile" + tilesArray.get(i - 1)));
         }
     }
 
-    private void flipTile(Context context, View visibleView, View invisibleView) {
-//        https://medium.com/geekculture/how-to-add-card-flip-animation-in-the-android-app-3060afeadd45
-        visibleView.setVisibility(View.VISIBLE);
-        float scale = context.getResources().getDisplayMetrics().density;
-        float cameraDist = 8000 * scale;
-        invisibleView.setCameraDistance(cameraDist);
-        visibleView.setCameraDistance(cameraDist);
-        AnimatorSet flipOutAnimatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(context, R.animator.back_animator);
-        flipOutAnimatorSet.setTarget(invisibleView);
-        AnimatorSet flipInAnimatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(context, R.animator.front_animator);
-        flipInAnimatorSet.setTarget(visibleView);
-        flipOutAnimatorSet.start();
-        flipInAnimatorSet.start();
-//        invisibleView.setVisibility(View.GONE);
-//        need java version of flipInAnimatorSet.doOnEnd { invisibleView.gone() }
-
-    }
-
     private void setUpTileRecyclerView() {
+        System.out.println(tiles);
         RecyclerView tileRecyclerView = findViewById(R.id.mainTileRecyclerView);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(MainActivity.this,4);
         tileRecyclerView.setLayoutManager(layoutManager);
