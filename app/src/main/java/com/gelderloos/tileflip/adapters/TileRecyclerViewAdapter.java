@@ -4,6 +4,7 @@ import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
 import android.content.Context;
 import android.content.res.Resources;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -103,7 +104,13 @@ public class TileRecyclerViewAdapter extends RecyclerView.Adapter<TileRecyclerVi
                 secondTileFront = frontView;
 
                 if(currentValue.equals(tile.getTileValue())) {
-                    matchFound();
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            matchFound();
+                        }
+                    }, 500);
                 }
                 reset(context);
             }

@@ -11,7 +11,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Spinner;
 
 import com.gelderloos.tileflip.adapters.TileRecyclerViewAdapter;
 
@@ -23,35 +25,34 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences preferences;
     List<Tile> tiles = null;
     TileRecyclerViewAdapter adapter;
-
+    String[] difficultyArr = new String[]{"16","24","36"};
 
     private int easyMatchPoint = 50, medMatchPoint = 75, hardMatchPoint = 100, noMatchPenalty = -10;
     private int maxTiles = 18;
-    int difficulty = 8;
-//    int difficulty, firstTileId = 0, firstTileValue = 0, secondTileId = 0, secondTileValue = 0, attempts, matchesLeft, score = 0;
+    int difficulty = 16;
+//    attempts, matchesLeft, score = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tiles = new ArrayList<>();
-        System.out.println(tiles);
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         setUpNewGameButton();
+        setUpDifficultySpinner();
         generateTiles();
         setUpTileRecyclerView();
     }
 
-//    public static class Tile {
-//        String tileId;
-//        String tileValue;
-//
-//        Tile(String tileId, String tileValue) {
-//            this.tileId = tileId;
-//            this.tileValue = tileValue;
-//        }
-//    }
+    private void setUpDifficultySpinner() {
+        Spinner difficultySpinner = findViewById(R.id.spinnerDifficultySelectorMain);
+        difficultySpinner.setAdapter(new ArrayAdapter<>(
+                this,
+                androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
+                difficultyArr
+        ));
+    }
 
     private void setUpNewGameButton() {
 //        get button & add click listener
@@ -88,9 +89,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setUpTileRecyclerView() {
-        System.out.println(tiles);
+        int boardWidth;
+        switch(difficulty) {
+            case 16: boardWidth = 4;
+            break;
+            case 24: boardWidth = 5;
+            break;
+            case 36: boardWidth = 6;
+            break;
+            default: boardWidth = 5;
+        }
         RecyclerView tileRecyclerView = findViewById(R.id.mainTileRecyclerView);
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(MainActivity.this,4);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(MainActivity.this,boardWidth);
         tileRecyclerView.setLayoutManager(layoutManager);
         adapter = new TileRecyclerViewAdapter(tiles, this);
         tileRecyclerView.setAdapter(adapter);
