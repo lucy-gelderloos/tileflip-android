@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        tiles = new ArrayList<>();
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         setUpNewGameButton();
@@ -78,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void generateTiles() {
-        tiles = new ArrayList<>();
         ArrayList<Integer> possibleValues = new ArrayList<>();
         int maxTiles = 18;
         for(int i = 1; i <= maxTiles; i++) {
@@ -123,11 +123,4 @@ public class MainActivity extends AppCompatActivity {
         tileRecyclerView.setAdapter(adapter);
     }
 
-    public void scoreUp() {
-        score += matchPoint;
-    }
-
-    public void scoreDown() {
-        score += penalty;
-    }
 }

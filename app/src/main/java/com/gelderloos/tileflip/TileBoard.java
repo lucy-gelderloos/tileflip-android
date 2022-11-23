@@ -11,10 +11,6 @@ public class TileBoard {
     static String currentValue = "";
     static Tile firstTile = null;
     static Tile secondTile = null;
-    static ImageView firstTileFront;
-    static ImageView firstTileBack;
-    static ImageView secondTileFront;
-    static ImageView secondTileBack;
 
     public static void flipTile(Context context, View visibleView, View invisibleView) {
         visibleView.setVisibility(View.VISIBLE);
@@ -48,6 +44,11 @@ public class TileBoard {
         if(!tile.isFlipped() && !tile.isMatchFound()) {
             tile.setFlipped(true);
             flipTile(context,backView,frontView);
+
+            ImageView firstTileFront = null;
+            ImageView firstTileBack = null;
+            ImageView secondTileFront;
+            ImageView secondTileBack;
             if(currentValue.equals("")) {
                 currentValue = tile.getTileValue();
                 firstTile = tile;
@@ -63,23 +64,23 @@ public class TileBoard {
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            matchFound();
+//                            matchFound(firstTileBack,secondTileBack);
                         }
                     }, 500);
                 }
-                reset(context);
+//                reset(context);
             }
         }
     }
 
-    public static void matchFound() {
+    public static void matchFound(ImageView firstTileBack, ImageView secondTileBack) {
         firstTile.setMatchFound(true);
         secondTile.setMatchFound(true);
         firstTileBack.setImageResource(R.drawable.matchfound);
         secondTileBack.setImageResource(R.drawable.matchfound);
     }
 
-    public static void reset(Context context) {
+    public static void reset(Context context, ImageView firstTileFront, ImageView secondTileFront, ImageView firstTileBack, ImageView secondTileBack) {
         flipBack(context,firstTileBack,firstTileFront);
         flipBack(context,secondTileBack,secondTileFront);
         firstTile.setFlipped(false);

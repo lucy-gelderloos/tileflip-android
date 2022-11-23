@@ -1,20 +1,14 @@
 package com.gelderloos.tileflip.fragments;
 
-import android.animation.AnimatorInflater;
-import android.animation.AnimatorSet;
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import com.gelderloos.tileflip.R;
-import com.gelderloos.tileflip.Tile;
 
 public class TileBoardFragment extends Fragment {
 

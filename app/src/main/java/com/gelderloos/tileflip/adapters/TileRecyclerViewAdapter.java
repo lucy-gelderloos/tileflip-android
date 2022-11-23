@@ -16,21 +16,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.gelderloos.tileflip.MainActivity;
 import com.gelderloos.tileflip.R;
 import com.gelderloos.tileflip.Tile;
-import com.gelderloos.tileflip.TileBoard;
-import com.gelderloos.tileflip.fragments.TileBoardFragment;
 
 import java.util.List;
 
 public class TileRecyclerViewAdapter extends RecyclerView.Adapter<TileRecyclerViewAdapter.TileViewHolder> {
     List<Tile> tiles;
     Context callingActivity;
-//    String currentValue = "";
-//    Tile firstTile = null;
-//    Tile secondTile = null;
-//    ImageView firstTileFront;
-//    ImageView firstTileBack;
-//    ImageView secondTileFront;
-//    ImageView secondTileBack;
+    String currentValue = "";
+    Tile firstTile = null;
+    Tile secondTile = null;
+    ImageView firstTileFront;
+    ImageView firstTileBack;
+    ImageView secondTileFront;
+    ImageView secondTileBack;
 
     public TileRecyclerViewAdapter(List<Tile> tiles, Context callingActivity) {
         this.tiles = tiles;
@@ -58,81 +56,81 @@ public class TileRecyclerViewAdapter extends RecyclerView.Adapter<TileRecyclerVi
         ImageView tileFrontImageView = holder.itemView.findViewById(R.id.imgViewTileFront);
         tileFrontImageView.setImageResource(imgId);
         tileBackImageView.setOnClickListener(view -> {
-            TileBoard.checkForMatch(thisTile, context, tileBackImageView, tileFrontImageView);
+            checkForMatch(thisTile, context, tileBackImageView, tileFrontImageView);
         });
     }
 
 //    TODO: how much of this can be moved to its own activity?
-//    private void flipTile(Context context, View visibleView, View invisibleView) {
-//        visibleView.setVisibility(View.VISIBLE);
-//        float scale = context.getResources().getDisplayMetrics().density;
-//        float cameraDist = 8000 * scale;
-//        invisibleView.setCameraDistance(cameraDist);
-//        visibleView.setCameraDistance(cameraDist);
-//        AnimatorSet flipOutAnimatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(context, R.animator.back_animator);
-//        flipOutAnimatorSet.setTarget(invisibleView);
-//        AnimatorSet flipInAnimatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(context, R.animator.front_animator);
-//        flipInAnimatorSet.setTarget(visibleView);
-//        flipOutAnimatorSet.start();
-//        flipInAnimatorSet.start();
-//    }
-//
-//    private void flipBack(Context context, View visibleView, View invisibleView) {
-//        visibleView.setVisibility(View.VISIBLE);
-//        float scale = context.getResources().getDisplayMetrics().density;
-//        float cameraDist = 8000 * scale;
-//        invisibleView.setCameraDistance(cameraDist);
-//        visibleView.setCameraDistance(cameraDist);
-//        AnimatorSet flipOutAnimatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(context, R.animator.back_animator_reverse);
-//        flipOutAnimatorSet.setTarget(invisibleView);
-//        AnimatorSet flipInAnimatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(context, R.animator.front_animator_reverse);
-//        flipInAnimatorSet.setTarget(visibleView);
-//        flipOutAnimatorSet.start();
-//        flipInAnimatorSet.start();
-//    }
-//
-//    private void checkForMatch(Tile tile, Context context, ImageView backView, ImageView frontView) {
-//        if(!tile.isFlipped() && !tile.isMatchFound()) {
-//            tile.setFlipped(true);
-//            flipTile(context,backView,frontView);
-//            if(currentValue.equals("")) {
-//                currentValue = tile.getTileValue();
-//                firstTile = tile;
-//                firstTileBack = backView;
-//                firstTileFront = frontView;
-//            } else {
-//                secondTile = tile;
-//                secondTileBack = backView;
-//                secondTileFront = frontView;
-//
-//                if(currentValue.equals(tile.getTileValue())) {
-//                    Handler handler = new Handler();
-//                    handler.postDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            matchFound();
-//                        }
-//                    }, 500);
-//                }
-//                reset(context);
-//            }
-//        }
-//    }
-//
-//    private void matchFound() {
-//        firstTile.setMatchFound(true);
-//        secondTile.setMatchFound(true);
-//        firstTileBack.setImageResource(R.drawable.matchfound);
-//        secondTileBack.setImageResource(R.drawable.matchfound);
-//    }
-//
-//    private void reset(Context context) {
-//        flipBack(context,firstTileBack,firstTileFront);
-//        flipBack(context,secondTileBack,secondTileFront);
-//        firstTile.setFlipped(false);
-//        secondTile.setFlipped(false);
-//        currentValue = "";
-//    }
+    private void flipTile(Context context, View visibleView, View invisibleView) {
+        visibleView.setVisibility(View.VISIBLE);
+        float scale = context.getResources().getDisplayMetrics().density;
+        float cameraDist = 8000 * scale;
+        invisibleView.setCameraDistance(cameraDist);
+        visibleView.setCameraDistance(cameraDist);
+        AnimatorSet flipOutAnimatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(context, R.animator.back_animator);
+        flipOutAnimatorSet.setTarget(invisibleView);
+        AnimatorSet flipInAnimatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(context, R.animator.front_animator);
+        flipInAnimatorSet.setTarget(visibleView);
+        flipOutAnimatorSet.start();
+        flipInAnimatorSet.start();
+    }
+
+    private void flipBack(Context context, View visibleView, View invisibleView) {
+        visibleView.setVisibility(View.VISIBLE);
+        float scale = context.getResources().getDisplayMetrics().density;
+        float cameraDist = 8000 * scale;
+        invisibleView.setCameraDistance(cameraDist);
+        visibleView.setCameraDistance(cameraDist);
+        AnimatorSet flipOutAnimatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(context, R.animator.back_animator_reverse);
+        flipOutAnimatorSet.setTarget(invisibleView);
+        AnimatorSet flipInAnimatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(context, R.animator.front_animator_reverse);
+        flipInAnimatorSet.setTarget(visibleView);
+        flipOutAnimatorSet.start();
+        flipInAnimatorSet.start();
+    }
+
+    private void checkForMatch(Tile tile, Context context, ImageView backView, ImageView frontView) {
+        if(!tile.isFlipped() && !tile.isMatchFound()) {
+            tile.setFlipped(true);
+            flipTile(context,backView,frontView);
+            if(currentValue.equals("")) {
+                currentValue = tile.getTileValue();
+                firstTile = tile;
+                firstTileBack = backView;
+                firstTileFront = frontView;
+            } else {
+                secondTile = tile;
+                secondTileBack = backView;
+                secondTileFront = frontView;
+
+                if(currentValue.equals(tile.getTileValue())) {
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            matchFound();
+                        }
+                    }, 500);
+                }
+                reset(context);
+            }
+        }
+    }
+
+    private void matchFound() {
+        firstTile.setMatchFound(true);
+        secondTile.setMatchFound(true);
+        firstTileBack.setImageResource(R.drawable.matchfound);
+        secondTileBack.setImageResource(R.drawable.matchfound);
+    }
+
+    private void reset(Context context) {
+        flipBack(context,firstTileBack,firstTileFront);
+        flipBack(context,secondTileBack,secondTileFront);
+        firstTile.setFlipped(false);
+        secondTile.setFlipped(false);
+        currentValue = "";
+    }
 
     @Override
     public int getItemCount() {
