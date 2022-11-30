@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tiles = new ArrayList<>();
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         setUpNewGameButton();
@@ -58,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
     private void setUpNewGameButton() {
         Button newGameButton = findViewById(R.id.buttonNewGameMain);
         newGameButton.setOnClickListener(view -> {
+            tiles = new ArrayList<>();
             String selectedDifficulty = difficultySpinner.getSelectedItem().toString();
             switch (selectedDifficulty) {
                 case "Easy": difficulty = 16;

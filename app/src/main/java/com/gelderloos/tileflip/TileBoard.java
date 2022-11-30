@@ -28,7 +28,7 @@ public class TileBoard {
     int penalty = -10;
 
     public TileBoard() {
-
+        score = 0;
     }
 
     public void flipTile(Context context, View visibleView, View invisibleView) {
