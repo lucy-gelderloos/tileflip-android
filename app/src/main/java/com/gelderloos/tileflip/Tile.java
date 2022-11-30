@@ -1,51 +1,49 @@
 package com.gelderloos.tileflip;
 
-import static com.gelderloos.tileflip.TileBoard.matchFound;
-
-import android.animation.AnimatorInflater;
-import android.animation.AnimatorSet;
 import android.content.Context;
 import android.os.Handler;
-import android.view.View;
 import android.widget.ImageView;
 
 public class Tile {
     private int  tileId;
     private String tileValue;
+    private TileBoard gameBoard;
     private boolean flipped;
     private boolean matchFound;
 
-    Tile(int tileId, String tileValue) {
+    Tile(int tileId, String tileValue, TileBoard gameBoard) {
         this.tileId = tileId;
         this.tileValue = tileValue;
+        this.gameBoard = gameBoard;
         this.flipped = false;
         this.matchFound = false;
     }
 
     public void checkForMatch(Context context, ImageView backView, ImageView frontView) {
-        if(!this.isFlipped() && !this.isMatchFound()) {
+        if(!this.isFlipped() && !this.isMatchFound() && !gameBoard.secondClicked) {
             this.setFlipped(true);
-            TileBoard.flipTile(context,backView,frontView);
-            if(TileBoard.currentValue.equals("")) {
-                TileBoard.currentValue = this.tileValue;
-                TileBoard.firstTile = this;
-                TileBoard.firstTileBack = backView;
-                TileBoard.firstTileFront = frontView;
+            gameBoard.flipTile(context,backView,frontView);
+            if(gameBoard.currentValue.equals("")) {
+                gameBoard.currentValue = this.tileValue;
+                gameBoard.firstTile = this;
+                gameBoard.firstTileBack = backView;
+                gameBoard.firstTileFront = frontView;
             } else {
-                TileBoard.secondTile = this;
-                TileBoard.secondTileBack = backView;
-                TileBoard.secondTileFront = frontView;
+                gameBoard.secondTile = this;
+                gameBoard.secondTileBack = backView;
+                gameBoard.secondTileFront = frontView;
+                gameBoard.secondClicked = true;
 
-                if(TileBoard.currentValue.equals(this.getTileValue())) {
+                if(gameBoard.currentValue.equals(this.getTileValue())) {
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            matchFound();
+                            gameBoard.matchFound();
                         }
                     }, 500);
-                }
-                TileBoard.reset(context);
+                } else gameBoard.matchNotFound();
+                gameBoard.reset(context);
             }
         }
     }

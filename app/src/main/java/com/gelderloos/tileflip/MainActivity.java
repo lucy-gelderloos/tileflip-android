@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.gelderloos.tileflip.adapters.TileRecyclerViewAdapter;
 
@@ -28,11 +29,10 @@ public class MainActivity extends AppCompatActivity {
     TileRecyclerViewAdapter adapter;
     String[] difficultyArr = new String[]{"Easy","Medium","Hard"};
     Spinner difficultySpinner = null;
-    int score = 0;
-
-    int difficulty = 16;
-    int penalty = -10;
+    int difficulty;
     int matchPoint;
+    TileBoard gameBoard;
+//    TextView scoreView = findViewById(R.id.textViewScoreMain);
 //    attempts, matchesLeft;
 
     @Override
@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
     private void setUpNewGameButton() {
         Button newGameButton = findViewById(R.id.buttonNewGameMain);
         newGameButton.setOnClickListener(view -> {
-            score = 0;
             String selectedDifficulty = difficultySpinner.getSelectedItem().toString();
             switch (selectedDifficulty) {
                 case "Easy": difficulty = 16;
@@ -73,6 +72,10 @@ public class MainActivity extends AppCompatActivity {
                 default: difficulty = 24;
                 matchPoint = 75;
             }
+            TextView scoreView = findViewById(R.id.textViewScoreMain);
+            gameBoard = new TileBoard();
+            gameBoard.setScoreView(scoreView);
+            gameBoard.setMatchPoint(matchPoint);
             generateTiles();
             setUpTileRecyclerView();
         });
@@ -101,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
             tilesArray.set(j,temp);
         }
         for(int i = 1; i <= tilesArray.size(); i++) {
-            tiles.add(new Tile(i, "tile" + tilesArray.get(i - 1)));
+            tiles.add(new Tile(i, "tile" + tilesArray.get(i - 1),gameBoard));
         }
     }
 
