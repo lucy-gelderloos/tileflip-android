@@ -7,10 +7,18 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.gelderloos.tileflip.adapters.TileRecyclerViewAdapter;
+
 public class TileBoard {
     static String currentValue = "";
     static Tile firstTile = null;
     static Tile secondTile = null;
+
+    //TODO: fix this memory leak
+    static ImageView firstTileFront;
+    static ImageView firstTileBack;
+    static ImageView secondTileFront;
+    static ImageView secondTileBack;
 
     public static void flipTile(Context context, View visibleView, View invisibleView) {
         visibleView.setVisibility(View.VISIBLE);
@@ -40,51 +48,19 @@ public class TileBoard {
         flipInAnimatorSet.start();
     }
 
-    public static void checkForMatch(Tile tile, Context context, ImageView backView, ImageView frontView) {
-        if(!tile.isFlipped() && !tile.isMatchFound()) {
-            tile.setFlipped(true);
-            flipTile(context,backView,frontView);
-
-            ImageView firstTileFront = null;
-            ImageView firstTileBack = null;
-            ImageView secondTileFront;
-            ImageView secondTileBack;
-            if(currentValue.equals("")) {
-                currentValue = tile.getTileValue();
-                firstTile = tile;
-                firstTileBack = backView;
-                firstTileFront = frontView;
-            } else {
-                secondTile = tile;
-                secondTileBack = backView;
-                secondTileFront = frontView;
-
-                if(currentValue.equals(tile.getTileValue())) {
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-//                            matchFound(firstTileBack,secondTileBack);
-                        }
-                    }, 500);
-                }
-//                reset(context);
-            }
-        }
-    }
-
-    public static void matchFound(ImageView firstTileBack, ImageView secondTileBack) {
+    public static void matchFound() {
         firstTile.setMatchFound(true);
         secondTile.setMatchFound(true);
         firstTileBack.setImageResource(R.drawable.matchfound);
         secondTileBack.setImageResource(R.drawable.matchfound);
     }
 
-    public static void reset(Context context, ImageView firstTileFront, ImageView secondTileFront, ImageView firstTileBack, ImageView secondTileBack) {
-        flipBack(context,firstTileBack,firstTileFront);
-        flipBack(context,secondTileBack,secondTileFront);
+    public static void reset(Context context) {
+        flipBack(context, firstTileBack, firstTileFront);
+        flipBack(context, secondTileBack, secondTileFront);
         firstTile.setFlipped(false);
         secondTile.setFlipped(false);
         currentValue = "";
     }
+
 }

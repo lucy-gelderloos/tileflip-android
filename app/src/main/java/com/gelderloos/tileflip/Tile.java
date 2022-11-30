@@ -1,4 +1,15 @@
-package com.gelderloos.tileflip;public class Tile {
+package com.gelderloos.tileflip;
+
+import static com.gelderloos.tileflip.TileBoard.matchFound;
+
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
+import android.content.Context;
+import android.os.Handler;
+import android.view.View;
+import android.widget.ImageView;
+
+public class Tile {
     private int  tileId;
     private String tileValue;
     private boolean flipped;
@@ -9,6 +20,34 @@ package com.gelderloos.tileflip;public class Tile {
         this.tileValue = tileValue;
         this.flipped = false;
         this.matchFound = false;
+    }
+
+    public void checkForMatch(Context context, ImageView backView, ImageView frontView) {
+        if(!this.isFlipped() && !this.isMatchFound()) {
+            this.setFlipped(true);
+            TileBoard.flipTile(context,backView,frontView);
+            if(TileBoard.currentValue.equals("")) {
+                TileBoard.currentValue = this.tileValue;
+                TileBoard.firstTile = this;
+                TileBoard.firstTileBack = backView;
+                TileBoard.firstTileFront = frontView;
+            } else {
+                TileBoard.secondTile = this;
+                TileBoard.secondTileBack = backView;
+                TileBoard.secondTileFront = frontView;
+
+                if(TileBoard.currentValue.equals(this.getTileValue())) {
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            matchFound();
+                        }
+                    }, 500);
+                }
+                TileBoard.reset(context);
+            }
+        }
     }
 
     public int getTileId() {
