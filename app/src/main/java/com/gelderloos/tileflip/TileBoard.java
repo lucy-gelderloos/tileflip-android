@@ -15,13 +15,15 @@ public class TileBoard {
     String currentValue = "";
     Tile firstTile = null;
     Tile secondTile = null;
-    boolean secondClicked = false;
+    boolean secondClicked = false; // encapsulate
 
     ImageView firstTileFront;
     ImageView firstTileBack;
     ImageView secondTileFront;
     ImageView secondTileBack;
     TextView scoreView;
+    ImageView discardPile;
+    Context context;
 
     int matchPoint;
     int score;
@@ -65,6 +67,12 @@ public class TileBoard {
         secondTile.setMatchFound(true);
         firstTileBack.setImageResource(R.drawable.matchfound);
         secondTileBack.setImageResource(R.drawable.matchfound);
+
+        int discardImg = context.getResources().getIdentifier(firstTile.getTileValue(),"drawable", context.getPackageName());
+        if(discardImg == 0) {
+            discardImg = context.getResources().getIdentifier("tileBack","drawable", context.getPackageName());
+        }
+        discardPile.setImageResource(discardImg);
     }
 
     public void matchNotFound() {
@@ -184,5 +192,21 @@ public class TileBoard {
 
     public void setPenalty(int penalty) {
         this.penalty = penalty;
+    }
+
+    public ImageView getDiscardPile() {
+        return discardPile;
+    }
+
+    public void setDiscardPile(ImageView discardPile) {
+        this.discardPile = discardPile;
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
     }
 }

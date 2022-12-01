@@ -32,8 +32,6 @@ public class MainActivity extends AppCompatActivity {
     int difficulty;
     int matchPoint;
     TileBoard gameBoard;
-//    TextView scoreView = findViewById(R.id.textViewScoreMain);
-//    attempts, matchesLeft;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,8 +71,11 @@ public class MainActivity extends AppCompatActivity {
                 matchPoint = 75;
             }
             TextView scoreView = findViewById(R.id.textViewScoreMain);
+            ImageView discardPile = findViewById(R.id.imageViewDiscardPileTile);
             gameBoard = new TileBoard();
             gameBoard.setScoreView(scoreView);
+            gameBoard.setDiscardPile(discardPile);
+            gameBoard.setContext(getApplicationContext());
             gameBoard.setMatchPoint(matchPoint);
             generateTiles();
             setUpTileRecyclerView();
