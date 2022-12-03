@@ -21,6 +21,7 @@ import com.gelderloos.tileflip.adapters.TileRecyclerViewAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     int matchPoint;
     TileBoard gameBoard;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setUpDifficultySpinner() {
-        difficultySpinner = findViewById(R.id.spinnerDifficultySelectorMain);
+        difficultySpinner = findViewById(R.id.spinnerDifficultySelectorSettings);
         difficultySpinner.setAdapter(new ArrayAdapter<>(
                 this,
                 androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
@@ -54,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setUpNewGameButton() {
         Button newGameButton = findViewById(R.id.buttonNewGameMain);
+//        Button newGameButton = findViewById(R.id.buttonNewGameSettings);
         newGameButton.setOnClickListener(view -> {
             tiles = new ArrayList<>();
             String selectedDifficulty = difficultySpinner.getSelectedItem().toString();
@@ -70,8 +73,9 @@ public class MainActivity extends AppCompatActivity {
                 default: difficulty = 24;
                 matchPoint = 75;
             }
-            TextView scoreView = findViewById(R.id.textViewScoreMain);
+            TextView scoreView = findViewById(R.id.textViewScoreBoardScore);
             ImageView discardPile = findViewById(R.id.imageViewDiscardPileTile);
+            discardPile.setImageResource(R.drawable.tileback);
             gameBoard = new TileBoard();
             gameBoard.setScoreView(scoreView);
             gameBoard.setDiscardPile(discardPile);
