@@ -13,7 +13,7 @@
     </padding>
 
     <size
-        android:height="@dimen/tile_height"
-        android:width="@dimen/tile_width"   >
+        android:height="90dp"
+        android:width="70dp"   >
     </size>
 </shape>

@@ -68,7 +68,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/gameinfo_background"
         app:layout_constraintEnd_toEndOf="parent"
@@ -81,42 +81,50 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/score_layers"
             android:fontFamily="@font/lato"
             android:text="Score"
             android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewScoreLabelScoreBoard"
             tools:layout_conversion_absoluteHeight="19dp"
             tools:layout_conversion_absoluteWidth="40dp" />
+
 
         <TextView
             android:id="@+id/textViewScoreLabelScoreBoard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/lato"
             android:text="SCORE"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="@+id/textViewScoreBoardScore"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/textViewScoreBoardScore"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_conversion_absoluteHeight="19dp"
             tools:layout_conversion_absoluteWidth="40dp" />
 
-        <ImageView
-            android:id="@+id/imageViewDiscardPileTile"
-            android:layout_width="@dimen/tile_width"
-            android:layout_height="@dimen/tile_height"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutDiscardPileMain"
+            android:layout_width="80dp"
+            android:layout_height="100dp"
             android:layout_marginEnd="24dp"
             android:background="@drawable/discard_layers"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageViewDiscardPileTile"
+                android:layout_width="@dimen/tile_width"
+                android:layout_height="@dimen/tile_height"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
