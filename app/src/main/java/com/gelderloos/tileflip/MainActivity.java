@@ -131,9 +131,6 @@ public class MainActivity extends AppCompatActivity {
     private void setUpTileGridView() {
         int boardWidth;
         switch (difficulty) {
-            case 16:
-                boardWidth = 4;
-                break;
             case 24:
                 boardWidth = 5;
                 break;
@@ -141,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
                 boardWidth = 6;
                 break;
             default:
-                boardWidth = 5;
+                boardWidth = 4;
         }
         GridView tileGridView = findViewById(R.id.gridViewTileBoard);
         tileGridView.setNumColumns(boardWidth);
