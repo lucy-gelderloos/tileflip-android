@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.gelderloos.tileflip.R;
-import com.gelderloos.tileflip.Tile;
+import com.gelderloos.tileflip.MainActivity.Tile;
 
 import java.util.List;
 
