@@ -83,8 +83,10 @@ public class MainActivity extends AppCompatActivity {
         } else if(selectedId == hardId) {
             difficulty = 36;
             matchPoint = 100;
-        } else difficulty = 16;
-        matchPoint = 50;
+        } else {
+            difficulty = 16;
+            matchPoint = 50;
+        }
     }
 
     private void setUpNewGameButton() {
