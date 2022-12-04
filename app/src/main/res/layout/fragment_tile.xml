@@ -6,15 +6,17 @@
     android:layout_height="@dimen/tile_height"
     tools:context=".fragments.TileFragment">
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imgViewTileFront"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:shapeAppearance="@style/RoundedCorners"
         android:src="@drawable/tileback" />
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imgViewTileBack"
         android:layout_width="match_parent"
+        app:shapeAppearance="@style/RoundedCorners"
         android:layout_height="match_parent" />
 
 </FrameLayout>

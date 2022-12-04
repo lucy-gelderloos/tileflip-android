@@ -19,4 +19,5 @@
     <color name="scoreBoardLight">#ba9de2</color>
     <color name="discardPile">#6A55F2</color>
     <color name="discardLight">#a195f0</color>
+    <color name="clear">#00FFFFFF</color>
 </resources>

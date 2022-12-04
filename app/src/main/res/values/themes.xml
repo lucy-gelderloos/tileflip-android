@@ -15,4 +15,10 @@
         <item name="android:fontFamily">@font/lato</item>
         <item name="color">@color/text</item>
     </style>
+
+    <style name="RoundedCorners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">5%</item>
+    </style>
+
 </resources>

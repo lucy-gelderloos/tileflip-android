@@ -77,34 +77,49 @@
         app:layout_constraintTop_toBottomOf="@+id/layoutTileBoardMain">
 
         <TextView
-            android:id="@+id/textViewScoreBoardScore"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/score_layers"
-            android:fontFamily="@font/lato"
-            android:text="Score"
-            android:textAlignment="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_conversion_absoluteHeight="19dp"
-            tools:layout_conversion_absoluteWidth="40dp" />
-
-
-        <TextView
             android:id="@+id/textViewScoreLabelScoreBoard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:fontFamily="@font/lato"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/lato_bold"
             android:text="SCORE"
             android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="@+id/textViewScoreBoardScore"
-            app:layout_constraintStart_toStartOf="@+id/textViewScoreBoardScore"
+            android:textColor="@color/text"
+            app:layout_constraintBottom_toTopOf="@+id/layoutScore"
+            app:layout_constraintEnd_toEndOf="@+id/layoutScore"
+            app:layout_constraintStart_toStartOf="@+id/layoutScore"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_conversion_absoluteHeight="19dp"
             tools:layout_conversion_absoluteWidth="40dp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutScore"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/score_layers"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/textViewScoreBoardScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato_black"
+                android:textAlignment="center"
+                android:textColor="@color/text"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_conversion_absoluteHeight="19dp"
+                tools:layout_conversion_absoluteWidth="40dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layoutDiscardPileMain"
