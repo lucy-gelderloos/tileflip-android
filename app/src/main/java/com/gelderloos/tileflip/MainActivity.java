@@ -25,28 +25,27 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     SharedPreferences preferences;
-
-    List<Tile> tiles = null;
-    String[] difficultyArr = new String[]{"Easy", "Medium", "Hard"};
+    Context context;
+//Game variables
     Spinner difficultySpinner = null;
-    int difficulty;
-    int matchPoint;
-
-    String currentValue = "";
-    Tile firstTile = null;
-    Tile secondTile = null;
-    boolean secondClicked = false;
-
-    ImageView firstTileFront;
-    ImageView firstTileBack;
-    ImageView secondTileFront;
-    ImageView secondTileBack;
     TextView scoreView;
     ImageView discardPile;
-    Context context;
-
-    int score;
+    String[] difficultyArr = new String[]{"Easy", "Medium", "Hard"};
     int penalty = -10;
+//Round variables
+    List<Tile> tiles = null;
+    int difficulty;
+    int matchPoint;
+    int score;
+//Turn variables
+    String currentValue = "";
+    Tile firstTile = null;
+    ImageView firstTileFront;
+    ImageView firstTileBack;
+    boolean secondClicked = false;
+    Tile secondTile = null;
+    ImageView secondTileFront;
+    ImageView secondTileBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
