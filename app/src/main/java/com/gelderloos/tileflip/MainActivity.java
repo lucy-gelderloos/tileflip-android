@@ -1,33 +1,26 @@
 package com.gelderloos.tileflip;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.animation.AnimatorInflater;
-import android.animation.AnimatorSet;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.gelderloos.tileflip.adapters.TileRecyclerViewAdapter;
+import com.gelderloos.tileflip.adapters.TileGridViewAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     SharedPreferences preferences;
     List<Tile> tiles = null;
-    TileRecyclerViewAdapter adapter;
     String[] difficultyArr = new String[]{"Easy","Medium","Hard"};
     Spinner difficultySpinner = null;
     int difficulty;
@@ -82,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
             gameBoard.setContext(getApplicationContext());
             gameBoard.setMatchPoint(matchPoint);
             generateTiles();
-            setUpTileRecyclerView();
+            setUpTileGridView();
         });
     }
 
@@ -113,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void setUpTileRecyclerView() {
+    private void setUpTileGridView() {
         int boardWidth;
         switch(difficulty) {
             case 16: boardWidth = 4;
@@ -124,11 +117,10 @@ public class MainActivity extends AppCompatActivity {
             break;
             default: boardWidth = 5;
         }
-        RecyclerView tileRecyclerView = findViewById(R.id.recyclerViewTileBoard);
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(MainActivity.this,boardWidth);
-        tileRecyclerView.setLayoutManager(layoutManager);
-        adapter = new TileRecyclerViewAdapter(tiles, this);
-        tileRecyclerView.setAdapter(adapter);
+        GridView tileGridView = findViewById(R.id.gridViewTileBoard);
+        tileGridView.setNumColumns(boardWidth);
+        TileGridViewAdapter adapter = new TileGridViewAdapter(this, tiles);
+        tileGridView.setAdapter(adapter);
     }
 
 }

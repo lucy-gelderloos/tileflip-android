@@ -4,12 +4,9 @@ import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
 import android.content.Context;
 import android.os.Handler;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.gelderloos.tileflip.adapters.TileRecyclerViewAdapter;
 
 public class TileBoard {
     String currentValue = "";
