@@ -10,13 +10,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.gelderloos.tileflip.adapters.TileGridViewAdapter;
@@ -29,10 +27,8 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences preferences;
     Context context;
 //Game variables
-    Spinner difficultySpinner = null;
     TextView scoreView;
     ImageView discardPile;
-    String[] difficultyArr = new String[]{"Easy", "Medium", "Hard"};
     int penalty = -10;
 
     RadioGroup difficultyGroup;
@@ -42,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
     RadioButton buttonHard;
 //Round variables
     List<Tile> tiles = null;
-    int difficulty;
-    int matchPoint;
+    int difficulty = 16;
+    int matchPoint = 50;
     int score;
 //Turn variables
     String currentValue = "";
@@ -66,18 +62,8 @@ public class MainActivity extends AppCompatActivity {
         difficultyGroup = (RadioGroup) findViewById(R.id.radioGroupDifficultyMain);
 
         setUpNewGameButton();
-//        setUpDifficultySpinner();
         setUpDifficultyRadio();
     }
-
-//    private void setUpDifficultySpinner() {
-//        difficultySpinner = findViewById(R.id.spinnerDifficultySelectorSettings);
-//        difficultySpinner.setAdapter(new ArrayAdapter<>(
-//                this,
-//                androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
-//                difficultyArr
-//        ));
-//    }
 
     private void setUpDifficultyRadio() {
         difficultyGroup = findViewById(R.id.radioGroupDifficultyMain);
@@ -106,7 +92,8 @@ public class MainActivity extends AppCompatActivity {
         newGameButton.setOnClickListener(view -> {
             tiles = new ArrayList<>();
             score = 0;
-            discardPile.setImageResource(R.drawable.tileback);
+            scoreView.setText(getString(R.string.score_string,score));
+            discardPile.setImageResource(0);
             generateTiles();
             setUpTileGridView();
         });
@@ -199,7 +186,9 @@ public class MainActivity extends AppCompatActivity {
         if (discardImg == 0) {
             discardImg = context.getResources().getIdentifier("tileBack", "drawable", context.getPackageName());
         }
-        discardPile.setImageResource(discardImg);
+        Handler handler = new Handler();
+        int finalDiscardImg = discardImg;
+        handler.postDelayed(() -> discardPile.setImageResource(finalDiscardImg), 1500);
     }
 
     public void matchNotFound() {
@@ -209,26 +198,20 @@ public class MainActivity extends AppCompatActivity {
     public void reset(Context context) {
         flipBack(context, firstTileBack, firstTileFront);
         flipBack(context, secondTileBack, secondTileFront);
-        firstTile.setFlipped(false);
-        secondTile.setFlipped(false);
         currentValue = "";
         Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                secondClicked = false;
-            }
+        handler.postDelayed(() -> {
+            secondClicked = false;
+            firstTile.setFlipped(false);
+            secondTile.setFlipped(false);
         }, 1500);
     }
 
     private void updateScore(int points) {
         Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                score += points;
-                scoreView.setText("" + score);
-            }
+        handler.postDelayed(() -> {
+            score += points;
+            scoreView.setText(getString(R.string.score_string,score));
         }, 1000);
     }
 
@@ -262,12 +245,7 @@ public class MainActivity extends AppCompatActivity {
 
                     if (currentValue.equals(this.getTileValue())) {
                         Handler handler = new Handler();
-                        handler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                matchFound();
-                            }
-                        }, 500);
+                        handler.postDelayed(MainActivity.this::matchFound, 500);
                     } else matchNotFound();
                     reset(context);
                 }

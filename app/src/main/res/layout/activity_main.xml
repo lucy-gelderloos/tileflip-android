@@ -40,7 +40,7 @@
                 android:button="@android:color/transparent"
                 android:checked="true"
                 android:onClick="onRadioButtonClicked"
-                android:text="EASY"
+                android:text="@string/difficulty_easy"
                 android:textAlignment="center" />
 
             <RadioButton
@@ -51,7 +51,7 @@
                 android:background="@drawable/difficulty_radio_background"
                 android:button="@android:color/transparent"
                 android:onClick="onRadioButtonClicked"
-                android:text="MEDIUM"
+                android:text="@string/difficulty_medium"
                 android:textAlignment="center" />
 
             <RadioButton
@@ -62,7 +62,7 @@
                 android:button="@android:color/transparent"
                 android:background="@drawable/difficulty_radio_background"
                 android:onClick="onRadioButtonClicked"
-                android:text="HARD"
+                android:text="@string/difficulty_hard"
                 android:textAlignment="center" />
 
 
@@ -76,7 +76,7 @@
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="4dp"
             android:elevation="50dp"
-            android:text="New Game"
+            android:text="@string/new_game"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -130,7 +130,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="4dp"
             android:fontFamily="@font/lato_bold"
-            android:text="SCORE"
+            android:text="@string/score_label"
             android:textAlignment="center"
             android:textColor="@color/text"
             app:layout_constraintBottom_toTopOf="@+id/layoutScore"
@@ -178,13 +178,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageViewDiscardPileTile"
                 android:layout_width="@dimen/tile_width"
                 android:layout_height="@dimen/tile_height"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearance="@style/RoundedCorners"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
