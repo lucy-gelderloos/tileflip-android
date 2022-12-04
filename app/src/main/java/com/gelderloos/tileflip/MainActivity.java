@@ -14,6 +14,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -32,6 +34,12 @@ public class MainActivity extends AppCompatActivity {
     ImageView discardPile;
     String[] difficultyArr = new String[]{"Easy", "Medium", "Hard"};
     int penalty = -10;
+
+    RadioGroup difficultyGroup;
+    RadioButton difficultyRadioButton;
+    RadioButton buttonEasy;
+    RadioButton buttonMedium;
+    RadioButton buttonHard;
 //Round variables
     List<Tile> tiles = null;
     int difficulty;
@@ -55,42 +63,49 @@ public class MainActivity extends AppCompatActivity {
         scoreView = findViewById(R.id.textViewScoreBoardScore);
         discardPile = findViewById(R.id.imageViewDiscardPileTile);
         context = this.getApplicationContext();
+        difficultyGroup = (RadioGroup) findViewById(R.id.radioGroupDifficultyMain);
 
         setUpNewGameButton();
-        setUpDifficultySpinner();
+//        setUpDifficultySpinner();
+        setUpDifficultyRadio();
     }
 
-    private void setUpDifficultySpinner() {
-        difficultySpinner = findViewById(R.id.spinnerDifficultySelectorSettings);
-        difficultySpinner.setAdapter(new ArrayAdapter<>(
-                this,
-                androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
-                difficultyArr
-        ));
+//    private void setUpDifficultySpinner() {
+//        difficultySpinner = findViewById(R.id.spinnerDifficultySelectorSettings);
+//        difficultySpinner.setAdapter(new ArrayAdapter<>(
+//                this,
+//                androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
+//                difficultyArr
+//        ));
+//    }
+
+    private void setUpDifficultyRadio() {
+        difficultyGroup = findViewById(R.id.radioGroupDifficultyMain);
+        buttonEasy = findViewById(R.id.radioButtonEasyMain);
+        buttonMedium = findViewById(R.id.radioButtonMediumMain);
+        buttonHard = findViewById(R.id.radioButtonHardMain);
+    }
+
+    public void onRadioButtonClicked(View view) {
+        int mediumId = R.id.radioButtonMediumMain;
+        int hardId = R.id.radioButtonHardMain;
+        int selectedId = difficultyGroup.getCheckedRadioButtonId();
+        difficultyRadioButton = findViewById(selectedId);
+        if(selectedId == mediumId) {
+            difficulty = 24;
+            matchPoint = 75;
+        } else if(selectedId == hardId) {
+            difficulty = 36;
+            matchPoint = 100;
+        } else difficulty = 16;
+        matchPoint = 50;
     }
 
     private void setUpNewGameButton() {
         Button newGameButton = findViewById(R.id.buttonNewGameMain);
         newGameButton.setOnClickListener(view -> {
             tiles = new ArrayList<>();
-            String selectedDifficulty = difficultySpinner.getSelectedItem().toString();
-            switch (selectedDifficulty) {
-                case "Easy":
-                    difficulty = 16;
-                    matchPoint = 50;
-                    break;
-                case "Medium":
-                    difficulty = 24;
-                    matchPoint = 75;
-                    break;
-                case "Hard":
-                    difficulty = 36;
-                    matchPoint = 100;
-                    break;
-                default:
-                    difficulty = 24;
-                    matchPoint = 75;
-            }
+            score = 0;
             discardPile.setImageResource(R.drawable.tileback);
             generateTiles();
             setUpTileGridView();

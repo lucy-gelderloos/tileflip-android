@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:drawable="@drawable/score"
+        android:drawable="@drawable/white_background"
         />
     <item
         android:drawable="@drawable/inner_shadow_bottom"
         />
     <item
-        android:drawable="@drawable/inner_shadow_left"
+        android:drawable="@drawable/inner_shadow_left_landscape"
         />
     <item
-        android:drawable="@drawable/inner_shadow_right"
+        android:drawable="@drawable/inner_shadow_right_landscape"
         />
     <item
         android:drawable="@drawable/inner_shadow_top"
