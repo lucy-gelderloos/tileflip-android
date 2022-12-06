@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -18,6 +20,9 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.gelderloos.tileflip.adapters.TileGridViewAdapter;
+import com.gelderloos.tileflip.fragments.WinGameDialogFragment;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,16 +31,16 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     SharedPreferences preferences;
     Context context;
+
+    RadioGroup difficultyGroup;
+    RadioButton difficultyRadioButton;
+    WinGameDialogFragment winGameDialogFragment;
 //Game variables
     TextView scoreView;
     ImageView discardPile;
     int penalty = -10;
-
-    RadioGroup difficultyGroup;
-    RadioButton difficultyRadioButton;
-    RadioButton buttonEasy;
-    RadioButton buttonMedium;
-    RadioButton buttonHard;
+    int matchesLeft;
+    int tries;
 //Round variables
     List<Tile> tiles = null;
     int difficulty = 16;
@@ -60,16 +65,9 @@ public class MainActivity extends AppCompatActivity {
         discardPile = findViewById(R.id.imageViewDiscardPileTile);
         context = this.getApplicationContext();
         difficultyGroup = (RadioGroup) findViewById(R.id.radioGroupDifficultyMain);
+        winGameDialogFragment = new WinGameDialogFragment();
 
         setUpNewGameButton();
-        setUpDifficultyRadio();
-    }
-
-    private void setUpDifficultyRadio() {
-        difficultyGroup = findViewById(R.id.radioGroupDifficultyMain);
-        buttonEasy = findViewById(R.id.radioButtonEasyMain);
-        buttonMedium = findViewById(R.id.radioButtonMediumMain);
-        buttonHard = findViewById(R.id.radioButtonHardMain);
     }
 
     public void onRadioButtonClicked(View view) {
@@ -95,6 +93,8 @@ public class MainActivity extends AppCompatActivity {
             tiles = new ArrayList<>();
             score = 0;
             scoreView.setText(getString(R.string.score_string,score));
+            matchesLeft = difficulty / 2;
+            tries = 0;
             discardPile.setImageResource(0);
             generateTiles();
             setUpTileGridView();
@@ -176,6 +176,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void matchFound() {
         updateScore(matchPoint);
+        matchesLeft--;
+        tries++;
         firstTile.setMatchFound(true);
         secondTile.setMatchFound(true);
         firstTileBack.setImageResource(R.drawable.matchfound);
@@ -188,9 +190,17 @@ public class MainActivity extends AppCompatActivity {
         Handler handler = new Handler();
         int finalDiscardImg = discardImg;
         handler.postDelayed(() -> discardPile.setImageResource(finalDiscardImg), 1500);
+        if(matchesLeft == 0) {
+            winGameDialogFragment.setTries(tries);
+            winGameDialogFragment.show(getSupportFragmentManager(),"win_game");
+//            TextView congratsText = findViewById(R.id.textViewWinGameDialogTries);
+//            congratsText.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/lato.ttf"));
+
+        }
     }
 
     public void matchNotFound() {
+        tries++;
         updateScore(penalty);
     }
 

@@ -6,4 +6,12 @@
     <string name="difficulty_hard">HARD</string>
     <string name="score_label">SCORE</string>
     <string name="score_string">%1$d</string>
+    <string name="dialog_welcome">Welcome dialog string</string>
+    <string name="dialog_cancel">Cancel</string>
+
+    <string name="dialog_congrats" formatted="true">Congratulations! You found all matches in %1$d tries.</string>
+    <string name="dialog_congrats_1">Congratulations!</string>
+    <string name="dialog_congrats_2">You found all matches in</string>
+    <string name="dialog_congrats_3">tries.</string>
+    <string name="dialog_play_again">PLAY AGAIN</string>
 </resources>
