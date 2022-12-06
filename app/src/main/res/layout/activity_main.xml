@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:orientation="horizontal"
-            android:background="@drawable/inner_shadow_background_square_landscape"
+            android:background="@drawable/inner_shadow_background_landscape"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">

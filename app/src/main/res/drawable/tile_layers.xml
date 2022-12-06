@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/white_background_3d"
+        android:height="82dp"
+        android:width="62dp"
+
+        />
+    <item android:drawable="@drawable/white_background_rounded"
+        android:height="@dimen/tile_height"
+        android:width="@dimen/tile_width"
+        android:top="0dp"
+        />
+</layer-list>
