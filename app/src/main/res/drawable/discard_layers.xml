@@ -2,6 +2,6 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@drawable/discard_pile_border"
         />
-    <item android:drawable="@drawable/discard_pile"
+    <item android:drawable="@drawable/game_info_highlight"
         />
 </layer-list>

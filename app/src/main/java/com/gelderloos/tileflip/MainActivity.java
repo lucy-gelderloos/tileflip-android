@@ -20,6 +20,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.gelderloos.tileflip.adapters.TileGridViewAdapter;
+import com.gelderloos.tileflip.fragments.InstructionsFragment;
 import com.gelderloos.tileflip.fragments.WinGameDialogFragment;
 
 import java.util.ArrayList;
@@ -63,12 +64,12 @@ public class MainActivity extends AppCompatActivity {
         discardPile = findViewById(R.id.imageViewDiscardPileTile);
         context = this.getApplicationContext();
         difficultyGroup = (RadioGroup) findViewById(R.id.radioGroupDifficultyMain);
+        RadioButton easyRadio = findViewById(R.id.radioButtonEasyMain);
+        easyRadio.setChecked(true);
         winGameDialogFragment = new WinGameDialogFragment();
 
-        winGameDialogFragment.setTries(15);
-        winGameDialogFragment.show(getSupportFragmentManager(),"win_game");
-
         setUpNewGameButton();
+        setUpInstructionsButton();
     }
 
     public void onRadioButtonClicked(View view) {
@@ -99,6 +100,14 @@ public class MainActivity extends AppCompatActivity {
             discardPile.setImageResource(0);
             generateTiles();
             setUpTileGridView();
+        });
+    }
+
+    private void setUpInstructionsButton() {
+        Button instructionsButton = findViewById(R.id.howToPlayButton);
+        InstructionsFragment instructionsFragment = new InstructionsFragment();
+        instructionsButton.setOnClickListener(view -> {
+            instructionsFragment.show(getSupportFragmentManager(),"instructions_fragment");
         });
     }
 

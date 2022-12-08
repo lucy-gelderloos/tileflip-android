@@ -6,7 +6,7 @@
         />
     <stroke
         android:width="2dp"
-        android:color="@color/discardLight"
+        android:color="@color/gameInfoLight"
         android:dashGap="4dp"
         android:dashWidth="4dp">
 

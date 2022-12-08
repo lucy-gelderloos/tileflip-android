@@ -15,9 +15,9 @@
     <color name="tileBoardLight">#7ba4e0</color>
     <color name="settings">#51B5E8</color>
     <color name="settingsLight">#8bc6e4</color>
-    <color name="scoreBoard">#8F51E8</color>
-    <color name="scoreBoardLight">#ba9de2</color>
-    <color name="discardPile">#6A55F2</color>
-    <color name="discardLight">#a195f0</color>
+    <color name="instructionsButton">#8F51E8</color>
+    <color name="instructionsButtonDark">#6E1DE1</color>
+    <color name="gameInfo">#6A55F2</color>
+    <color name="gameInfoLight">#a195f0</color>
     <color name="clear">#00FFFFFF</color>
 </resources>

@@ -6,6 +6,8 @@
         <entry key="..\:/Users/lucyg/AndroidStudioProjects/TileFlip/app/src/main/res/drawable/card_layers.xml" value="0.1" />
         <entry key="..\:/Users/lucyg/AndroidStudioProjects/TileFlip/app/src/main/res/drawable/difficulty_radio_background.xml" value="0.1" />
         <entry key="..\:/Users/lucyg/AndroidStudioProjects/TileFlip/app/src/main/res/drawable/discard_layers.xml" value="0.1" />
+        <entry key="..\:/Users/lucyg/AndroidStudioProjects/TileFlip/app/src/main/res/drawable/discard_pile.xml" value="0.1" />
+        <entry key="..\:/Users/lucyg/AndroidStudioProjects/TileFlip/app/src/main/res/drawable/discard_pile_border.xml" value="0.1" />
         <entry key="..\:/Users/lucyg/AndroidStudioProjects/TileFlip/app/src/main/res/drawable/gameinfo_background.xml" value="0.1" />
         <entry key="..\:/Users/lucyg/AndroidStudioProjects/TileFlip/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/Users/lucyg/AndroidStudioProjects/TileFlip/app/src/main/res/drawable/inner_shadow_background.xml" value="0.1" />
@@ -14,8 +16,14 @@
         <entry key="..\:/Users/lucyg/AndroidStudioProjects/TileFlip/app/src/main/res/drawable/inner_shadow_left.xml" value="0.1" />
         <entry key="..\:/Users/lucyg/AndroidStudioProjects/TileFlip/app/src/main/res/drawable/inner_shadow_left_landscape.xml" value="0.1" />
         <entry key="..\:/Users/lucyg/AndroidStudioProjects/TileFlip/app/src/main/res/drawable/inner_shadow_right_landscape.xml" value="0.1" />
+        <entry key="..\:/Users/lucyg/AndroidStudioProjects/TileFlip/app/src/main/res/drawable/instructions_button_background_default.xml" value="0.1" />
+        <entry key="..\:/Users/lucyg/AndroidStudioProjects/TileFlip/app/src/main/res/drawable/instructions_button_background_focused.xml" value="0.1" />
+        <entry key="..\:/Users/lucyg/AndroidStudioProjects/TileFlip/app/src/main/res/drawable/instructions_button_background_focused_pressed.xml" value="0.1" />
+        <entry key="..\:/Users/lucyg/AndroidStudioProjects/TileFlip/app/src/main/res/drawable/instructions_button_background_pressed.xml" value="0.1" />
+        <entry key="..\:/Users/lucyg/AndroidStudioProjects/TileFlip/app/src/main/res/drawable/instructions_button_states.xml" value="0.1" />
         <entry key="..\:/Users/lucyg/AndroidStudioProjects/TileFlip/app/src/main/res/drawable/radio_button_selected.xml" value="0.1" />
         <entry key="..\:/Users/lucyg/AndroidStudioProjects/TileFlip/app/src/main/res/drawable/radio_button_unselected.xml" value="0.1" />
+        <entry key="..\:/Users/lucyg/AndroidStudioProjects/TileFlip/app/src/main/res/drawable/rectangle.xml" value="0.1" />
         <entry key="..\:/Users/lucyg/AndroidStudioProjects/TileFlip/app/src/main/res/drawable/score.xml" value="0.1" />
         <entry key="..\:/Users/lucyg/AndroidStudioProjects/TileFlip/app/src/main/res/drawable/score_layers.xml" value="0.1" />
         <entry key="..\:/Users/lucyg/AndroidStudioProjects/TileFlip/app/src/main/res/drawable/settings_background.xml" value="0.1" />
@@ -23,8 +31,9 @@
         <entry key="..\:/Users/lucyg/AndroidStudioProjects/TileFlip/app/src/main/res/drawable/white_background_3d.xml" value="0.1" />
         <entry key="..\:/Users/lucyg/AndroidStudioProjects/TileFlip/app/src/main/res/drawable/white_background_rounded.xml" value="0.1" />
         <entry key="..\:/Users/lucyg/AndroidStudioProjects/TileFlip/app/src/main/res/layout-v31/fragment_tile.xml" value="0.19635416666666666" />
-        <entry key="..\:/Users/lucyg/AndroidStudioProjects/TileFlip/app/src/main/res/layout/activity_main.xml" value="0.75" />
+        <entry key="..\:/Users/lucyg/AndroidStudioProjects/TileFlip/app/src/main/res/layout/activity_main.xml" value="0.23136246786632392" />
         <entry key="..\:/Users/lucyg/AndroidStudioProjects/TileFlip/app/src/main/res/layout/fragment_discard_pile.xml" value="0.1125" />
+        <entry key="..\:/Users/lucyg/AndroidStudioProjects/TileFlip/app/src/main/res/layout/fragment_instructions.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/lucyg/AndroidStudioProjects/TileFlip/app/src/main/res/layout/fragment_score_board.xml" value="0.335" />
         <entry key="..\:/Users/lucyg/AndroidStudioProjects/TileFlip/app/src/main/res/layout/fragment_settings.xml" value="0.625" />
         <entry key="..\:/Users/lucyg/AndroidStudioProjects/TileFlip/app/src/main/res/layout/fragment_tile.xml" value="0.11" />

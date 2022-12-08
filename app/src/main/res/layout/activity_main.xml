@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".MainActivity"
-    android:layout_marginBottom="16dp">
+    android:paddingBottom="8dp">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -91,7 +90,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutTileBoardMain"
         android:layout_width="0dp"
-        android:layout_height="480dp"
+        android:layout_height="950px"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -129,50 +128,88 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layoutTileBoardMain">
 
-        <TextView
-            android:id="@+id/textViewScoreLabelScoreBoard"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="4dp"
-            android:fontFamily="@font/lato_bold"
-            android:text="@string/score_label"
-            android:textAlignment="center"
-            android:textColor="@color/text"
-            app:layout_constraintBottom_toTopOf="@+id/layoutScore"
-            app:layout_constraintEnd_toEndOf="@+id/layoutScore"
-            app:layout_constraintStart_toStartOf="@+id/layoutScore"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_conversion_absoluteHeight="19dp"
-            tools:layout_conversion_absoluteWidth="40dp" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layoutScore"
+            android:id="@+id/layoutInstructions"
             android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_height="90dp"
+            android:background="@drawable/game_info_highlight"
             android:layout_marginStart="24dp"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/inner_shadow_background_square"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/textViewScoreBoardScore"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/lato_black"
-                android:textAlignment="center"
-                android:textColor="@color/text"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toBottomOf="parent"
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/howToPlayButton"
+                android:layout_width="@dimen/tile_width"
+                android:layout_height="@dimen/tile_height"
+                android:background="@drawable/instructions_button_states"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="@string/instructions_button_label"
+                android:textSize="36sp"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutScoreContainer"
+            android:layout_width="70dp"
+            android:layout_height="90dp"
+            android:background="@drawable/game_info_highlight"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textViewScoreLabelScoreBoard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/lato_bold"
+                android:text="@string/score_label"
+                android:textAlignment="center"
+                android:textColor="@color/text"
+                app:layout_constraintBottom_toTopOf="@+id/layoutScore"
+                app:layout_constraintEnd_toEndOf="@+id/layoutScore"
+                app:layout_constraintStart_toStartOf="@+id/layoutScore"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_conversion_absoluteHeight="19dp"
                 tools:layout_conversion_absoluteWidth="40dp" />
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutScore"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/inner_shadow_background_square"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:id="@+id/textViewScoreBoardScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato_black"
+                    android:textAlignment="center"
+                    android:textColor="@color/text"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:layout_conversion_absoluteHeight="19dp"
+                    tools:layout_conversion_absoluteWidth="40dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layoutDiscardPileMain"
@@ -191,7 +228,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:shapeAppearance="@style/RoundedCorners"/>
+                app:shapeAppearance="@style/RoundedCorners" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

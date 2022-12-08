@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="rectangle"   >
-
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
     <solid
-        android:color="@color/scoreBoard" >
+        android:color="@color/instructionsButtonDark" >
     </solid>
 
     <stroke
         android:width="2dp"
-        android:color="@color/scoreBoard" >
+        android:color="@color/instructionsButtonDark" >
     </stroke>
 
     <padding
@@ -22,5 +19,4 @@
     <corners
         android:radius="5dp"   >
     </corners>
-
 </shape>
