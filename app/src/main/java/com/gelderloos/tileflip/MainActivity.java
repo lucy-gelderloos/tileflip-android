@@ -1,17 +1,17 @@
 package com.gelderloos.tileflip;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -21,8 +21,6 @@ import android.widget.TextView;
 
 import com.gelderloos.tileflip.adapters.TileGridViewAdapter;
 import com.gelderloos.tileflip.fragments.WinGameDialogFragment;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,6 +64,9 @@ public class MainActivity extends AppCompatActivity {
         context = this.getApplicationContext();
         difficultyGroup = (RadioGroup) findViewById(R.id.radioGroupDifficultyMain);
         winGameDialogFragment = new WinGameDialogFragment();
+
+        winGameDialogFragment.setTries(15);
+        winGameDialogFragment.show(getSupportFragmentManager(),"win_game");
 
         setUpNewGameButton();
     }
@@ -130,15 +131,24 @@ public class MainActivity extends AppCompatActivity {
 
     private void setUpTileGridView() {
         int boardWidth;
+        ConstraintLayout tileBoard = findViewById(R.id.layoutTileBoardMain);
+        ViewGroup.LayoutParams tileBoardParams = tileBoard.getLayoutParams();
+
         switch (difficulty) {
             case 24:
                 boardWidth = 5;
+                tileBoardParams.height = 1150;
+                tileBoard.setLayoutParams(tileBoardParams);
                 break;
             case 36:
                 boardWidth = 6;
+                tileBoardParams.height = 1400;
+                tileBoard.setLayoutParams(tileBoardParams);
                 break;
             default:
                 boardWidth = 4;
+                tileBoardParams.height = 950;
+                tileBoard.setLayoutParams(tileBoardParams);
         }
         GridView tileGridView = findViewById(R.id.gridViewTileBoard);
         tileGridView.setNumColumns(boardWidth);
@@ -193,9 +203,6 @@ public class MainActivity extends AppCompatActivity {
         if(matchesLeft == 0) {
             winGameDialogFragment.setTries(tries);
             winGameDialogFragment.show(getSupportFragmentManager(),"win_game");
-//            TextView congratsText = findViewById(R.id.textViewWinGameDialogTries);
-//            congratsText.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/lato.ttf"));
-
         }
     }
 

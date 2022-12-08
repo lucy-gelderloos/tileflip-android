@@ -21,4 +21,25 @@
         <item name="cornerSize">5%</item>
     </style>
 
+    <style name="WinGameDialog" parent="@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+        <!--        <item name="buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>-->
+        <!--        <item name="buttonBarNeutralButtonStyle">....</item>-->
+    </style>
+
+
+    <style name="PositiveButtonStyle" parent="@style/Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/text</item>
+        <item name="backgroundTint">@color/mainYellow</item>
+    </style>
+
+    <style name="Theme.TileFlip.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.TileFlip.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.TileFlip.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>
