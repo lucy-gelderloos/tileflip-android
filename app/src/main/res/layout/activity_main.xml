@@ -107,6 +107,7 @@
             android:horizontalSpacing="6dp"
             android:verticalSpacing="6dp"
             android:gravity="center"
+            android:nestedScrollingEnabled="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

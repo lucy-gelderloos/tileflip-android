@@ -40,11 +40,10 @@ public class TileGridViewAdapter extends ArrayAdapter<Tile> {
         String tileValue = thisTile.getTileValue();
         Context context = this.context;
         int imgId = context.getResources().getIdentifier(tileValue,"drawable", context.getPackageName());
-        if(imgId == 0) {
-            imgId = context.getResources().getIdentifier("matchFound","drawable", context.getPackageName());
-        }
         ImageView tileBackImageView = listItemView.findViewById(R.id.imgViewTileBack);
-        tileBackImageView.setImageResource(R.drawable.tileback);
+        if(imgId == 0) {
+            tileBackImageView.setImageResource(0);
+        } else tileBackImageView.setImageResource(R.drawable.tileback);
         ImageView tileFrontImageView = listItemView.findViewById(R.id.imgViewTileFront);
         tileFrontImageView.setImageResource(imgId);
         tileBackImageView.setOnClickListener(view -> {

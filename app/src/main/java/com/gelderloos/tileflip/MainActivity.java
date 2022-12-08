@@ -136,6 +136,9 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 1; i <= tilesArray.size(); i++) {
             tiles.add(new Tile(i, "tile" + tilesArray.get(i - 1)));
         }
+        if(difficulty == 24) {
+            tiles.add(12, new Tile(0, "0"));
+        }
     }
 
     private void setUpTileGridView() {
@@ -254,7 +257,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         public void checkForMatch(Context context, ImageView backView, ImageView frontView) {
-            if (!this.isFlipped() && !this.isMatchFound() && !secondClicked) {
+            if (!this.isFlipped() && !this.isMatchFound() && !secondClicked && !this.tileValue.equals("0")) {
                 this.setFlipped(true);
                 flipTile(context, backView, frontView);
                 if (currentValue.equals("")) {
