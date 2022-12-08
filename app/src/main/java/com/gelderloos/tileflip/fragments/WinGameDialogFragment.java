@@ -21,7 +21,7 @@ public class WinGameDialogFragment extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
         LayoutInflater inflater = requireActivity().getLayoutInflater();
         View congratsView = inflater.inflate(R.layout.win_game_layout,null);
         TextView congratsTextView = congratsView.findViewById(R.id.textViewWinGameDialogTries);
