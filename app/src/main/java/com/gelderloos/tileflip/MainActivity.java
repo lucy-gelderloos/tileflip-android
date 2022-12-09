@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String HIGH_SCORE_EASY_TAG = "HIGH_SCORE_EASY_TAG";
     public static final String HIGH_SCORE_MEDIUM_TAG = "HIGH_SCORE_MEDIUM_TAG";
     public static final String HIGH_SCORE_HARD_TAG = "HIGH_SCORE_HARD_TAG";
+    public static final String DIFFICULTY_TAG = "DIFFICULTY_TAG";
 
     SharedPreferences preferences;
     Context context;
@@ -38,10 +39,6 @@ public class MainActivity extends AppCompatActivity {
     RadioButton difficultyRadioButton;
     WinGameDialogFragment winGameDialogFragment;
 
-//User variables
-    int highScoreEasy;
-    int highScoreMedium;
-    int highScoreHard;
 //Game variables
     TextView scoreView;
     ImageView discardPile;
@@ -49,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     int matchesLeft;
 //Round variables
     List<Tile> tiles = null;
-    int difficulty = 16;
+    int difficulty;
     int matchPoint = 50;
     int score;
 //Turn variables
@@ -67,12 +64,32 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        if(preferences.contains(DIFFICULTY_TAG)) {
+            difficulty = preferences.getInt(DIFFICULTY_TAG,16);
+        } else difficulty = 16;
         scoreView = findViewById(R.id.textViewScoreBoardScore);
         discardPile = findViewById(R.id.imageViewDiscardPileTile);
         context = this.getApplicationContext();
         difficultyGroup = (RadioGroup) findViewById(R.id.radioGroupDifficultyMain);
         RadioButton easyRadio = findViewById(R.id.radioButtonEasyMain);
-        easyRadio.setChecked(true);
+        RadioButton mediumRadio = findViewById(R.id.radioButtonMediumMain);
+        RadioButton hardRadio = findViewById(R.id.radioButtonHardMain);
+        switch (difficulty) {
+            case 24:
+                easyRadio.setChecked(false);
+                mediumRadio.setChecked(true);
+                hardRadio.setChecked(false);
+                break;
+            case 36:
+                easyRadio.setChecked(false);
+                mediumRadio.setChecked(false);
+                hardRadio.setChecked(true);
+                break;
+            default:
+                easyRadio.setChecked(true);
+                mediumRadio.setChecked(false);
+                hardRadio.setChecked(false);
+        }
 
 //        winGameDialogFragment.setScore(250);
 //        winGameDialogFragment.show(getSupportFragmentManager(),"win_game");
@@ -110,6 +127,9 @@ public class MainActivity extends AppCompatActivity {
             winGameDialogFragment.setContext(context);
             generateTiles();
             setUpTileGridView();
+            SharedPreferences.Editor preferenceEditor = preferences.edit();
+            preferenceEditor.putInt(DIFFICULTY_TAG,difficulty);
+            preferenceEditor.apply();
         });
     }
 
