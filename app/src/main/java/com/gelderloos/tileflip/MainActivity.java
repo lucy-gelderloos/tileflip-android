@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
     ImageView discardPile;
     int penalty = -10;
     int matchesLeft;
-    int tries;
 //Round variables
     List<Tile> tiles = null;
     int difficulty = 16;
@@ -74,8 +73,6 @@ public class MainActivity extends AppCompatActivity {
         difficultyGroup = (RadioGroup) findViewById(R.id.radioGroupDifficultyMain);
         RadioButton easyRadio = findViewById(R.id.radioButtonEasyMain);
         easyRadio.setChecked(true);
-        winGameDialogFragment = new WinGameDialogFragment();
-        winGameDialogFragment.setContext(context);
 
 //        winGameDialogFragment.setTries(15);
 //        winGameDialogFragment.setScore(250);
@@ -109,8 +106,9 @@ public class MainActivity extends AppCompatActivity {
             score = 0;
             scoreView.setText(getString(R.string.score_string,score));
             matchesLeft = difficulty / 2;
-            tries = 0;
             discardPile.setImageResource(0);
+            winGameDialogFragment = new WinGameDialogFragment();
+            winGameDialogFragment.setContext(context);
             generateTiles();
             setUpTileGridView();
         });
@@ -212,7 +210,6 @@ public class MainActivity extends AppCompatActivity {
     public void matchFound() {
         updateScore(matchPoint);
         matchesLeft--;
-        tries++;
         firstTile.setMatchFound(true);
         secondTile.setMatchFound(true);
         firstTileBack.setImageResource(R.drawable.matchfound);
@@ -231,7 +228,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void matchNotFound() {
-        tries++;
         updateScore(penalty);
     }
 
@@ -257,7 +253,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void gameOver() {
-        winGameDialogFragment.setTries(tries);
         SharedPreferences.Editor preferenceEditor = preferences.edit();
         int highScore;
         switch (difficulty) {
@@ -265,6 +260,7 @@ public class MainActivity extends AppCompatActivity {
                 highScore = preferences.getInt(HIGH_SCORE_EASY_TAG,0);
                 if(score > highScore) {
                     preferenceEditor.putInt(HIGH_SCORE_EASY_TAG,score);
+                    winGameDialogFragment.setNewHighScore(true);
                 }
                 preferenceEditor.apply();
                 break;
@@ -272,6 +268,7 @@ public class MainActivity extends AppCompatActivity {
                 highScore = preferences.getInt(HIGH_SCORE_MEDIUM_TAG,0);
                 if(score > highScore) {
                     preferenceEditor.putInt(HIGH_SCORE_MEDIUM_TAG,score);
+                    winGameDialogFragment.setNewHighScore(true);
                 }
                 preferenceEditor.apply();
                 break;
@@ -279,6 +276,7 @@ public class MainActivity extends AppCompatActivity {
                 highScore = preferences.getInt(HIGH_SCORE_HARD_TAG,0);
                 if(score > highScore) {
                     preferenceEditor.putInt(HIGH_SCORE_HARD_TAG,score);
+                    winGameDialogFragment.setNewHighScore(true);
                 }
                 preferenceEditor.apply();
                 break;
@@ -286,6 +284,7 @@ public class MainActivity extends AppCompatActivity {
                 highScore = preferences.getInt(HIGH_SCORE_EASY_TAG,0);
                 if(score > highScore) {
                     preferenceEditor.putInt(HIGH_SCORE_EASY_TAG,score);
+                    winGameDialogFragment.setNewHighScore(true);
                 }
                 preferenceEditor.apply();
         }

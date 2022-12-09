@@ -20,13 +20,15 @@ import android.widget.TextView;
 import com.gelderloos.tileflip.MainActivity;
 import com.gelderloos.tileflip.R;
 
+import org.w3c.dom.Text;
+
 import java.util.Objects;
 
 public class WinGameDialogFragment extends DialogFragment {
-    private int tries;
     private int score;
     private Context context;
     SharedPreferences preferences;
+    private boolean newHighScore = false;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -34,9 +36,12 @@ public class WinGameDialogFragment extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
         LayoutInflater inflater = requireActivity().getLayoutInflater();
         View congratsView = inflater.inflate(R.layout.win_game_layout,null);
-
-        TextView congratsTextView = congratsView.findViewById(R.id.textViewWinGameDialogTries);
-        congratsTextView.setText(getString(R.string.dialog_congrats,tries));
+        TextView scoreLabel = congratsView.findViewById(R.id.textViewScoreLabel);
+        if(newHighScore) {
+            scoreLabel.setText(R.string.newHighScoreLabel);
+        } else scoreLabel.setText(R.string.finalScoreLabel);
+        TextView finalScore = congratsView.findViewById(R.id.textViewFinalScore);
+        finalScore.setText(getString(R.string.finalScore,score));
         int easyHighScore = preferences.getInt("HIGH_SCORE_EASY_TAG",0);
         TextView easyScoreTextView = congratsView.findViewById(R.id.highScoreEasy);
         easyScoreTextView.setText(getString(R.string.highScoreEasy,easyHighScore));
@@ -61,14 +66,6 @@ public class WinGameDialogFragment extends DialogFragment {
         // Required empty public constructor
     }
 
-    public int getTries() {
-        return tries;
-    }
-
-    public void setTries(int tries) {
-        this.tries = tries;
-    }
-
     public int getScore() {
         return score;
     }
@@ -85,5 +82,13 @@ public class WinGameDialogFragment extends DialogFragment {
 
     public void setContext(Context context) {
         this.context = context;
+    }
+
+    public boolean isNewHighScore() {
+        return newHighScore;
+    }
+
+    public void setNewHighScore(boolean newHighScore) {
+        this.newHighScore = newHighScore;
     }
 }

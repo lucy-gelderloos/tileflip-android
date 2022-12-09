@@ -6,22 +6,33 @@
     android:paddingRight="16dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <TextView
-        android:id="@+id/textViewWinGameDialogTries"
+        android:id="@+id/textViewScoreLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        style="@style/WinGameDialogText"/>
+    <TextView
+        android:id="@+id/textViewFinalScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/finalScore"
+        app:layout_constraintTop_toBottomOf="@+id/textViewScoreLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         style="@style/WinGameDialogText"/>
     <TextView
         android:id="@+id/textViewWinGameTableTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/textViewWinGameDialogTries"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFinalScore"
         app:layout_constraintStart_toStartOf="parent"
         android:text="@string/highScoreTableTitle"
         style="@style/WinGameDialogText"
         android:fontFamily="@font/lato_black"/>
-
     <TableLayout
         android:id="@+id/tableLayoutHighScores"
         android:layout_width="match_parent"

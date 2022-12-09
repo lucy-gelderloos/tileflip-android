@@ -6,12 +6,14 @@
     <string name="difficulty_hard">HARD</string>
     <string name="score_label">SCORE</string>
     <string name="score_string">%1$d</string>
-    <string name="dialog_congrats" formatted="true">Congratulations! You found all matches in %1$d tries.</string>
     <string name="dialog_play_again">PLAY AGAIN</string>
     <string name="instructions_button_label">\?</string>
     <string name="instructions_dialog_title">How to play</string>
     <string name="instructions">Flip tiles over two at a time. Find matching tiles to score points!</string>
     <string name="instructions_alert_positive_button">GOT IT!</string>
+    <string name="newHighScoreLabel">New high score!</string>
+    <string name="finalScoreLabel">Well done! Final score:</string>
+    <string name="finalScore">%1$d</string>
     <string name="highScoreTableTitle">High Scores</string>
     <string name="highScoreTableDifficultyColumnLabel">Difficulty Level</string>
     <string name="highScoreTableScoreColumnLabel">High Score</string>
