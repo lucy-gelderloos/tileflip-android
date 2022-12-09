@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
 //Game variables
     TextView scoreView;
     ImageView discardPile;
+    ImageView discardedTile;
     int penalty = -10;
     int easyMatchPoint = 50;
     int mediumMatchPoint = 75;
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         } else difficulty = 16;
         scoreView = findViewById(R.id.textViewScoreBoardScore);
         discardPile = findViewById(R.id.imageViewDiscardPileTile);
+        discardedTile = findViewById(R.id.imageViewDiscardedTile);
         context = this.getApplicationContext();
         difficultyGroup = (RadioGroup) findViewById(R.id.radioGroupDifficultyMain);
         RadioButton easyRadio = findViewById(R.id.radioButtonEasyMain);
@@ -96,9 +98,6 @@ public class MainActivity extends AppCompatActivity {
                 hardRadio.setChecked(false);
                 matchPoint = easyMatchPoint;
         }
-
-//        winGameDialogFragment.setScore(250);
-//        winGameDialogFragment.show(getSupportFragmentManager(),"win_game");
 
         setUpNewGameButton();
         setUpInstructionsButton();
@@ -129,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
             scoreView.setText(getString(R.string.score_string,score));
             matchesLeft = difficulty / 2;
             discardPile.setImageResource(0);
+            discardedTile.setImageResource(0);
             winGameDialogFragment = new WinGameDialogFragment();
             winGameDialogFragment.setContext(context);
             generateTiles();
@@ -238,14 +238,13 @@ public class MainActivity extends AppCompatActivity {
         shrinkAnimatorSet2.setTarget(secondTileFront);
         shrinkAnimatorSet1.start();
         shrinkAnimatorSet2.start();
-        ImageView discardedTile = findViewById(R.id.imageViewDiscardedTile);
         int discardImg = context.getResources().getIdentifier(firstTile.getTileValue(), "drawable", context.getPackageName());
         AnimatorSet growTile = (AnimatorSet) AnimatorInflater.loadAnimator(context,R.animator.grow);
         growTile.setTarget(discardedTile);
         growTile.start();
         Handler handler = new Handler();
         handler.postDelayed(() -> discardedTile.setImageResource(discardImg),333);
-        handler.postDelayed(() -> discardPile.setImageResource(discardImg), 1500);
+        handler.postDelayed(() -> discardPile.setImageResource(discardImg), 1000);
     }
 
     public void matchNotFound(Context context) {
@@ -284,7 +283,7 @@ public class MainActivity extends AppCompatActivity {
             secondClicked = false;
             firstTile.setFlipped(false);
             secondTile.setFlipped(false);
-        }, 1500);
+        }, 2500);
     }
 
     private void gameOver() {
@@ -315,7 +314,10 @@ public class MainActivity extends AppCompatActivity {
                 }
                 preferenceEditor.apply();
         }
-        winGameDialogFragment.show(getSupportFragmentManager(),"win_game");
+        Handler handler = new Handler();
+        handler.postDelayed(() -> {
+            winGameDialogFragment.show(getSupportFragmentManager(),"win_game");
+        },1500);
     }
 
     public class Tile {
