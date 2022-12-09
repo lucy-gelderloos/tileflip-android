@@ -231,6 +231,17 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:shapeAppearance="@style/RoundedCorners" />
 
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imageViewDiscardedTile"
+                android:layout_width="@dimen/tile_width"
+                android:layout_height="@dimen/tile_height"
+                android:scaleX="0"
+                android:scaleY="0"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearance="@style/RoundedCorners" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

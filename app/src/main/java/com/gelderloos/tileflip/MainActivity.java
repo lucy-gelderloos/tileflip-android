@@ -74,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
         RadioButton easyRadio = findViewById(R.id.radioButtonEasyMain);
         easyRadio.setChecked(true);
 
-//        winGameDialogFragment.setTries(15);
 //        winGameDialogFragment.setScore(250);
 //        winGameDialogFragment.show(getSupportFragmentManager(),"win_game");
 
@@ -193,6 +192,42 @@ public class MainActivity extends AppCompatActivity {
         flipInAnimatorSet.start();
     }
 
+    public void matchFound() {
+        updateScore(matchPoint);
+        matchesLeft--;
+        firstTile.setMatchFound(true);
+        secondTile.setMatchFound(true);
+        firstTileBack.setImageResource(0);
+        secondTileBack.setImageResource(0);
+        discardTiles();
+        if(matchesLeft == 0) {
+            gameOver();
+        }
+    }
+
+    public void discardTiles() {
+        AnimatorSet shrinkAnimatorSet1 = (AnimatorSet) AnimatorInflater.loadAnimator(context, R.animator.shrink);
+        AnimatorSet shrinkAnimatorSet2 = (AnimatorSet) AnimatorInflater.loadAnimator(context, R.animator.shrink);
+        shrinkAnimatorSet1.setTarget(firstTileFront);
+        shrinkAnimatorSet2.setTarget(secondTileFront);
+        shrinkAnimatorSet1.start();
+        shrinkAnimatorSet2.start();
+        ImageView discardedTile = findViewById(R.id.imageViewDiscardedTile);
+        int discardImg = context.getResources().getIdentifier(firstTile.getTileValue(), "drawable", context.getPackageName());
+        AnimatorSet growTile = (AnimatorSet) AnimatorInflater.loadAnimator(context,R.animator.grow);
+        growTile.setTarget(discardedTile);
+        growTile.start();
+        Handler handler = new Handler();
+        handler.postDelayed(() -> discardedTile.setImageResource(discardImg),333);
+        handler.postDelayed(() -> discardPile.setImageResource(discardImg), 1500);
+    }
+
+    public void matchNotFound(Context context) {
+        updateScore(penalty);
+        flipBack(context, firstTileBack, firstTileFront);
+        flipBack(context, secondTileBack, secondTileFront);
+    }
+
     public void flipBack(Context context, View visibleView, View invisibleView) {
         visibleView.setVisibility(View.VISIBLE);
         float scale = context.getResources().getDisplayMetrics().density;
@@ -207,42 +242,6 @@ public class MainActivity extends AppCompatActivity {
         flipInAnimatorSet.start();
     }
 
-    public void matchFound() {
-        updateScore(matchPoint);
-        matchesLeft--;
-        firstTile.setMatchFound(true);
-        secondTile.setMatchFound(true);
-        firstTileBack.setImageResource(R.drawable.matchfound);
-        secondTileBack.setImageResource(R.drawable.matchfound);
-
-        int discardImg = context.getResources().getIdentifier(firstTile.getTileValue(), "drawable", context.getPackageName());
-        if (discardImg == 0) {
-            discardImg = context.getResources().getIdentifier("tileBack", "drawable", context.getPackageName());
-        }
-        Handler handler = new Handler();
-        int finalDiscardImg = discardImg;
-        handler.postDelayed(() -> discardPile.setImageResource(finalDiscardImg), 1500);
-        if(matchesLeft == 0) {
-            gameOver();
-        }
-    }
-
-    public void matchNotFound() {
-        updateScore(penalty);
-    }
-
-    public void reset(Context context) {
-        flipBack(context, firstTileBack, firstTileFront);
-        flipBack(context, secondTileBack, secondTileFront);
-        currentValue = "";
-        Handler handler = new Handler();
-        handler.postDelayed(() -> {
-            secondClicked = false;
-            firstTile.setFlipped(false);
-            secondTile.setFlipped(false);
-        }, 1500);
-    }
-
     private void updateScore(int points) {
         score += points;
         winGameDialogFragment.setScore(score);
@@ -250,6 +249,16 @@ public class MainActivity extends AppCompatActivity {
         handler.postDelayed(() -> {
             scoreView.setText(getString(R.string.score_string,score));
         }, 1000);
+    }
+
+    public void reset() {
+        currentValue = "";
+        Handler handler = new Handler();
+        handler.postDelayed(() -> {
+            secondClicked = false;
+            firstTile.setFlipped(false);
+            secondTile.setFlipped(false);
+        }, 1500);
     }
 
     private void gameOver() {
@@ -322,8 +331,8 @@ public class MainActivity extends AppCompatActivity {
                     if (currentValue.equals(this.getTileValue())) {
                         Handler handler = new Handler();
                         handler.postDelayed(MainActivity.this::matchFound, 500);
-                    } else matchNotFound();
-                    reset(context);
+                    } else matchNotFound(context);
+                    reset();
                 }
             }
         }
