@@ -56,7 +56,7 @@ public class WinGameDialogFragment extends DialogFragment {
                 .setView(congratsView)
                 .setPositiveButton(R.string.dialog_play_again, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-
+                        ((MainActivity) requireActivity()).startNewGame();
                     }
                 });
         return builder.create();

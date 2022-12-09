@@ -123,20 +123,24 @@ public class MainActivity extends AppCompatActivity {
     private void setUpNewGameButton() {
         Button newGameButton = findViewById(R.id.buttonNewGameMain);
         newGameButton.setOnClickListener(view -> {
-            tiles = new ArrayList<>();
-            score = 0;
-            scoreView.setText(getString(R.string.score_string,score));
-            matchesLeft = difficulty / 2;
-            discardPile.setImageResource(0);
-            discardedTile.setImageResource(0);
-            winGameDialogFragment = new WinGameDialogFragment();
-            winGameDialogFragment.setContext(context);
-            generateTiles();
-            setUpTileGridView();
-            SharedPreferences.Editor preferenceEditor = preferences.edit();
-            preferenceEditor.putInt(DIFFICULTY_TAG,difficulty);
-            preferenceEditor.apply();
+            startNewGame();
         });
+    }
+
+    public void startNewGame() {
+        tiles = new ArrayList<>();
+        score = 0;
+        scoreView.setText(getString(R.string.score_string,score));
+        matchesLeft = difficulty / 2;
+        discardPile.setImageResource(0);
+        discardedTile.setImageResource(0);
+        winGameDialogFragment = new WinGameDialogFragment();
+        winGameDialogFragment.setContext(context);
+        generateTiles();
+        setUpTileGridView();
+        SharedPreferences.Editor preferenceEditor = preferences.edit();
+        preferenceEditor.putInt(DIFFICULTY_TAG,difficulty);
+        preferenceEditor.apply();
     }
 
     private void setUpInstructionsButton() {
@@ -283,7 +287,7 @@ public class MainActivity extends AppCompatActivity {
             secondClicked = false;
             firstTile.setFlipped(false);
             secondTile.setFlipped(false);
-        }, 2500);
+        }, 2000);
     }
 
     private void gameOver() {
