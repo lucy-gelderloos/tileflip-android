@@ -43,11 +43,14 @@ public class MainActivity extends AppCompatActivity {
     TextView scoreView;
     ImageView discardPile;
     int penalty = -10;
-    int matchesLeft;
+    int easyMatchPoint = 50;
+    int mediumMatchPoint = 75;
+    int hardMatchPoint = 100;
 //Round variables
     List<Tile> tiles = null;
     int difficulty;
-    int matchPoint = 50;
+    int matchesLeft;
+    int matchPoint = easyMatchPoint;
     int score;
 //Turn variables
     String currentValue = "";
@@ -79,16 +82,19 @@ public class MainActivity extends AppCompatActivity {
                 easyRadio.setChecked(false);
                 mediumRadio.setChecked(true);
                 hardRadio.setChecked(false);
+                matchPoint = mediumMatchPoint;
                 break;
             case 36:
                 easyRadio.setChecked(false);
                 mediumRadio.setChecked(false);
                 hardRadio.setChecked(true);
+                matchPoint = hardMatchPoint;
                 break;
             default:
                 easyRadio.setChecked(true);
                 mediumRadio.setChecked(false);
                 hardRadio.setChecked(false);
+                matchPoint = easyMatchPoint;
         }
 
 //        winGameDialogFragment.setScore(250);
@@ -105,13 +111,13 @@ public class MainActivity extends AppCompatActivity {
         difficultyRadioButton = findViewById(selectedId);
         if(selectedId == mediumId) {
             difficulty = 24;
-            matchPoint = 75;
+            matchPoint = mediumMatchPoint;
         } else if(selectedId == hardId) {
             difficulty = 36;
-            matchPoint = 100;
+            matchPoint = hardMatchPoint;
         } else {
             difficulty = 16;
-            matchPoint = 50;
+            matchPoint = easyMatchPoint;
         }
     }
 
@@ -285,14 +291,6 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor preferenceEditor = preferences.edit();
         int highScore;
         switch (difficulty) {
-            case 16:
-                highScore = preferences.getInt(HIGH_SCORE_EASY_TAG,0);
-                if(score > highScore) {
-                    preferenceEditor.putInt(HIGH_SCORE_EASY_TAG,score);
-                    winGameDialogFragment.setNewHighScore(true);
-                }
-                preferenceEditor.apply();
-                break;
             case 24:
                 highScore = preferences.getInt(HIGH_SCORE_MEDIUM_TAG,0);
                 if(score > highScore) {
