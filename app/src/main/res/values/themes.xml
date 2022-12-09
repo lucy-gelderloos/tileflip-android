@@ -34,6 +34,18 @@
         <item name="android:typeface">@font/lato_black</item>
     </style>
 
+    <style name="WinGameDialogText">
+        <item name="android:textSize">22sp</item>
+        <item name="font">@font/lato_bold</item>
+        <item name="color">@color/text</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:paddingTop">16dp</item>
+    </style>
+
+    <style name="HighScoreTable" parent="WinGameDialogText">
+        <item name="android:paddingRight">16dp</item>
+    </style>
+
     <style name="Theme.TileFlip.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

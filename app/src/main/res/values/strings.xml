@@ -12,4 +12,10 @@
     <string name="instructions_dialog_title">How to play</string>
     <string name="instructions">Flip tiles over two at a time. Find matching tiles to score points!</string>
     <string name="instructions_alert_positive_button">GOT IT!</string>
+    <string name="highScoreTableTitle">High Scores</string>
+    <string name="highScoreTableDifficultyColumnLabel">Difficulty Level</string>
+    <string name="highScoreTableScoreColumnLabel">High Score</string>
+    <string name="highScoreEasy">%1$d</string>
+    <string name="highScoreMedium">%1$d</string>
+    <string name="highScoreHard">%1$d</string>
 </resources>

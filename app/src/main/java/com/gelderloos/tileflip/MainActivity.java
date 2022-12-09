@@ -27,13 +27,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String TAG = "MainActivity";
+    public static final String TAG = "MainActivity";
+    public static final String HIGH_SCORE_EASY_TAG = "HIGH_SCORE_EASY_TAG";
+    public static final String HIGH_SCORE_MEDIUM_TAG = "HIGH_SCORE_MEDIUM_TAG";
+    public static final String HIGH_SCORE_HARD_TAG = "HIGH_SCORE_HARD_TAG";
+
     SharedPreferences preferences;
     Context context;
-
     RadioGroup difficultyGroup;
     RadioButton difficultyRadioButton;
     WinGameDialogFragment winGameDialogFragment;
+
+//User variables
+    int highScoreEasy;
+    int highScoreMedium;
+    int highScoreHard;
 //Game variables
     TextView scoreView;
     ImageView discardPile;
@@ -67,6 +75,11 @@ public class MainActivity extends AppCompatActivity {
         RadioButton easyRadio = findViewById(R.id.radioButtonEasyMain);
         easyRadio.setChecked(true);
         winGameDialogFragment = new WinGameDialogFragment();
+        winGameDialogFragment.setContext(context);
+
+//        winGameDialogFragment.setTries(15);
+//        winGameDialogFragment.setScore(250);
+//        winGameDialogFragment.show(getSupportFragmentManager(),"win_game");
 
         setUpNewGameButton();
         setUpInstructionsButton();
@@ -213,8 +226,7 @@ public class MainActivity extends AppCompatActivity {
         int finalDiscardImg = discardImg;
         handler.postDelayed(() -> discardPile.setImageResource(finalDiscardImg), 1500);
         if(matchesLeft == 0) {
-            winGameDialogFragment.setTries(tries);
-            winGameDialogFragment.show(getSupportFragmentManager(),"win_game");
+            gameOver();
         }
     }
 
@@ -236,11 +248,48 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateScore(int points) {
+        score += points;
+        winGameDialogFragment.setScore(score);
         Handler handler = new Handler();
         handler.postDelayed(() -> {
-            score += points;
             scoreView.setText(getString(R.string.score_string,score));
         }, 1000);
+    }
+
+    private void gameOver() {
+        winGameDialogFragment.setTries(tries);
+        SharedPreferences.Editor preferenceEditor = preferences.edit();
+        int highScore;
+        switch (difficulty) {
+            case 16:
+                highScore = preferences.getInt(HIGH_SCORE_EASY_TAG,0);
+                if(score > highScore) {
+                    preferenceEditor.putInt(HIGH_SCORE_EASY_TAG,score);
+                }
+                preferenceEditor.apply();
+                break;
+            case 24:
+                highScore = preferences.getInt(HIGH_SCORE_MEDIUM_TAG,0);
+                if(score > highScore) {
+                    preferenceEditor.putInt(HIGH_SCORE_MEDIUM_TAG,score);
+                }
+                preferenceEditor.apply();
+                break;
+            case 36:
+                highScore = preferences.getInt(HIGH_SCORE_HARD_TAG,0);
+                if(score > highScore) {
+                    preferenceEditor.putInt(HIGH_SCORE_HARD_TAG,score);
+                }
+                preferenceEditor.apply();
+                break;
+            default:
+                highScore = preferences.getInt(HIGH_SCORE_EASY_TAG,0);
+                if(score > highScore) {
+                    preferenceEditor.putInt(HIGH_SCORE_EASY_TAG,score);
+                }
+                preferenceEditor.apply();
+        }
+        winGameDialogFragment.show(getSupportFragmentManager(),"win_game");
     }
 
     public class Tile {
