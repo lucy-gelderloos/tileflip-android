@@ -35,6 +35,7 @@ public class TileGridViewAdapter extends ArrayAdapter<Tile> {
             // Layout Inflater inflates each item to be displayed in GridView.
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_tile, parent, false);
         }
+        listItemView.setBackgroundResource(R.drawable.tile_highlight);
 
         Tile thisTile = getItem(position);
         String tileValue = thisTile.getTileValue();
