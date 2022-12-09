@@ -1,80 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="360dp"
     android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView
-        android:id="@+id/textViewScoreLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+    android:paddingRight="16dp">
+
+    <nl.dionsegijn.konfetti.xml.KonfettiView
+        android:id="@+id/winGameKonfettiView"
+        android:layout_width="match_parent"
+        android:layout_height="360dp"
+        android:layout_marginTop="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        style="@style/WinGameDialogText"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewScoreLabel"
+        style="@style/WinGameDialogText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/textViewFinalScore"
+        style="@style/WinGameDialogText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/finalScore"
-        app:layout_constraintTop_toBottomOf="@+id/textViewScoreLabel"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        style="@style/WinGameDialogText"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewScoreLabel" />
+
     <TextView
         android:id="@+id/textViewWinGameTableTitle"
+        style="@style/WinGameDialogText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/textViewFinalScore"
-        app:layout_constraintStart_toStartOf="parent"
+        android:fontFamily="@font/lato_black"
         android:text="@string/highScoreTableTitle"
-        style="@style/WinGameDialogText"
-        android:fontFamily="@font/lato_black"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFinalScore" />
+
     <TableLayout
         android:id="@+id/tableLayoutHighScores"
+        style="@style/HighScoreTable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/textViewWinGameTableTitle"
         app:layout_constraintStart_toStartOf="parent"
-        style="@style/HighScoreTable">
+        app:layout_constraintTop_toBottomOf="@id/textViewWinGameTableTitle">
+
         <TableRow>
+
             <TextView
                 android:id="@+id/highScoreTableDifficultyColumnLabel"
-                android:text="@string/highScoreTableDifficultyColumnLabel"
                 style="@style/HighScoreTable"
-                android:fontFamily="@font/lato_bold"/>
+                android:fontFamily="@font/lato_bold"
+                android:text="@string/highScoreTableDifficultyColumnLabel" />
+
             <TextView
                 android:id="@+id/highScoreTableScoreColumnLabel"
-                android:text="@string/highScoreTableScoreColumnLabel"
                 style="@style/HighScoreTable"
-                android:fontFamily="@font/lato_bold"/>
+                android:fontFamily="@font/lato_bold"
+                android:text="@string/highScoreTableScoreColumnLabel" />
         </TableRow>
+
         <TableRow>
+
             <TextView
-                android:text="@string/difficulty_easy"
-                style="@style/HighScoreTable"/>
+                style="@style/HighScoreTable"
+                android:text="@string/difficulty_easy" />
+
             <TextView
                 android:id="@+id/highScoreEasy"
-                style="@style/HighScoreTable"/>
+                style="@style/HighScoreTable" />
         </TableRow>
+
         <TableRow>
+
             <TextView
-                android:text="@string/difficulty_medium"
-                style="@style/HighScoreTable"/>
+                style="@style/HighScoreTable"
+                android:text="@string/difficulty_medium" />
+
             <TextView
                 android:id="@+id/highScoreMedium"
-                style="@style/HighScoreTable"/>
+                style="@style/HighScoreTable" />
         </TableRow>
+
         <TableRow>
+
             <TextView
-                android:text="@string/difficulty_hard"
-                style="@style/HighScoreTable"/>
+                style="@style/HighScoreTable"
+                android:text="@string/difficulty_hard" />
+
             <TextView
                 android:id="@+id/highScoreHard"
-                style="@style/HighScoreTable"/>
+                style="@style/HighScoreTable" />
         </TableRow>
     </TableLayout>
 

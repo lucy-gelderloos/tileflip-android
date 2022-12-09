@@ -18,6 +18,17 @@ import android.widget.TextView;
 import com.gelderloos.tileflip.MainActivity;
 import com.gelderloos.tileflip.R;
 
+import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
+
+import nl.dionsegijn.konfetti.core.Party;
+import nl.dionsegijn.konfetti.core.PartyFactory;
+import nl.dionsegijn.konfetti.core.Position;
+import nl.dionsegijn.konfetti.core.emitter.Emitter;
+import nl.dionsegijn.konfetti.core.emitter.EmitterConfig;
+import nl.dionsegijn.konfetti.core.models.Shape;
+import nl.dionsegijn.konfetti.xml.KonfettiView;
+
 public class WinGameDialogFragment extends DialogFragment {
     private int score;
     private Context context;
@@ -30,9 +41,20 @@ public class WinGameDialogFragment extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
         LayoutInflater inflater = requireActivity().getLayoutInflater();
         View congratsView = inflater.inflate(R.layout.win_game_layout,null);
+
+        KonfettiView konfettiView = congratsView.findViewById(R.id.winGameKonfettiView);
+        EmitterConfig emitterConfig = new Emitter(3L, TimeUnit.SECONDS).perSecond(50);
+        Party winParty = new PartyFactory(emitterConfig)
+                .spread(360)
+                .shapes(Arrays.asList(Shape.Square.INSTANCE, Shape.Circle.INSTANCE))
+                .colors(Arrays.asList(0x7ba4e0,0xffeca2,0x8bc6e4,0xa195f0))
+                .setSpeedBetween(0f, 30f)
+                .position(new Position.Relative(0.5, 0.1))
+                .build();
         TextView scoreLabel = congratsView.findViewById(R.id.textViewScoreLabel);
         if(newHighScore) {
             scoreLabel.setText(R.string.newHighScoreLabel);
+            konfettiView.start(winParty);
         } else scoreLabel.setText(R.string.finalScoreLabel);
         TextView finalScore = congratsView.findViewById(R.id.textViewFinalScore);
         finalScore.setText(getString(R.string.finalScore,score));
