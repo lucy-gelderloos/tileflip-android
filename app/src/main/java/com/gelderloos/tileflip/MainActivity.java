@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -131,9 +132,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setUpNewGameButton() {
         Button newGameButton = findViewById(R.id.buttonNewGameMain);
-        newGameButton.setOnClickListener(view -> {
-            startNewGame();
-        });
+        newGameButton.setOnClickListener(view -> startNewGame());
     }
 
     public void startNewGame() {
@@ -155,9 +154,7 @@ public class MainActivity extends AppCompatActivity {
     private void setUpInstructionsButton() {
         Button instructionsButton = findViewById(R.id.howToPlayButton);
         InstructionsFragment instructionsFragment = new InstructionsFragment();
-        instructionsButton.setOnClickListener(view -> {
-            instructionsFragment.show(getSupportFragmentManager(),"instructions_fragment");
-        });
+        instructionsButton.setOnClickListener(view -> instructionsFragment.show(getSupportFragmentManager(),"instructions_fragment"));
     }
 
     private void generateTiles() {
@@ -192,23 +189,27 @@ public class MainActivity extends AppCompatActivity {
 
     private void setUpTileGridView() {
         int boardWidth;
+        int boardHeight;
         ConstraintLayout tileBoard = findViewById(R.id.layoutTileBoardMain);
         ViewGroup.LayoutParams tileBoardParams = tileBoard.getLayoutParams();
 
         switch (difficulty) {
             case 24:
                 boardWidth = 5;
-                tileBoardParams.height = 1150;
+                boardHeight = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 450, getResources().getDisplayMetrics());
+                tileBoardParams.height = boardHeight;
                 tileBoard.setLayoutParams(tileBoardParams);
                 break;
             case 36:
                 boardWidth = 6;
-                tileBoardParams.height = 1400;
+                boardHeight = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 540, getResources().getDisplayMetrics());
+                tileBoardParams.height = boardHeight;
                 tileBoard.setLayoutParams(tileBoardParams);
                 break;
             default:
                 boardWidth = 4;
-                tileBoardParams.height = 950;
+                boardHeight = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 360, getResources().getDisplayMetrics());
+                tileBoardParams.height = boardHeight;
                 tileBoard.setLayoutParams(tileBoardParams);
         }
         GridView tileGridView = findViewById(R.id.gridViewTileBoard);
@@ -284,9 +285,7 @@ public class MainActivity extends AppCompatActivity {
         score += points;
         winGameDialogFragment.setScore(score);
         Handler handler = new Handler();
-        handler.postDelayed(() -> {
-            scoreView.setText(getString(R.string.score_string,score));
-        }, 1000);
+        handler.postDelayed(() -> scoreView.setText(getString(R.string.score_string,score)), 1000);
     }
 
     public void reset() {
@@ -328,9 +327,7 @@ public class MainActivity extends AppCompatActivity {
                 preferenceEditor.apply();
         }
         Handler handler = new Handler();
-        handler.postDelayed(() -> {
-            winGameDialogFragment.show(getSupportFragmentManager(),"win_game");
-        },1500);
+        handler.postDelayed(() -> winGameDialogFragment.show(getSupportFragmentManager(),"win_game"),1500);
     }
 
     public class Tile {

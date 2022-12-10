@@ -17,8 +17,7 @@ public class TileFragment extends Fragment {
     }
 
     public static TileFragment newInstance(String tileId, String tileValue) {
-        TileFragment fragment = new TileFragment();
-        return fragment;
+        return new TileFragment();
     }
 
     @Override
