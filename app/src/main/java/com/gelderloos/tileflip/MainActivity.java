@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
         setUpNewGameButton();
         setUpInstructionsButton();
-//        resetHighScores();
+        resetHighScores();
     }
 
     public void resetHighScores() {
