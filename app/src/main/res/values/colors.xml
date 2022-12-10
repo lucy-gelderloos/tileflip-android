@@ -20,4 +20,20 @@
     <color name="gameInfo">#6A55F2</color>
     <color name="gameInfoLight">#a195f0</color>
     <color name="clear">#00FFFFFF</color>
+
+    <color name="tile_red">#fc0606</color>
+    <color name="tile_red_dark">#550101</color>
+    <color name="tile_purple">#b300ff</color>
+    <color name="tile_purple_dark">#4f006f</color>
+    <color name="tile_blue">#073cf8</color>
+    <color name="tile_blue_dark">#021456</color>
+    <color name="tile_green">#2ad52a</color>
+    <color name="tile_green_dark">#248424</color>
+    <color name="tile_yellow">#fff300</color>
+    <color name="tile_yellow_dark">#948d00</color>
+    <color name="tile_orange">#ff8e00</color>
+    <color name="tile_orange_dark">#945800</color>
+    <color name="tile_border">#502c50</color>
+    <color name="tile_shadow">#7a6d5d</color>
+    <color name="tile_back_spiral">#c026c0</color>
 </resources>

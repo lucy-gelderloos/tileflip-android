@@ -8,20 +8,20 @@
       android:strokeAlpha="0"
       android:strokeLineJoin="bevel"
       android:strokeWidth="0.661"
-      android:fillColor="#7a6d5d"
+      android:fillColor="@color/tile_shadow"
       android:strokeLineCap="round"/>
   <path
       android:pathData="M1.108,0.066H14.569c0.577,0 1.042,0.465 1.042,1.042V19.86c0,0.577 -0.465,1.042 -1.042,1.042H1.108c-0.577,0 -1.042,-0.465 -1.042,-1.042V1.108c0,-0.577 0.465,-1.042 1.042,-1.042z"
       android:strokeLineJoin="bevel"
       android:strokeWidth="0.0669396"
       android:fillColor="#ffffff"
-      android:strokeColor="#502c50"
+      android:strokeColor="@color/tile_border"
       android:strokeLineCap="round"/>
   <path
       android:pathData="M4.058,6.497H11.922V14.361H4.058Z"
       android:strokeLineJoin="bevel"
       android:strokeWidth="0.132292"
-      android:fillColor="#fc0606"
-      android:strokeColor="#550101"
+      android:fillColor="@color/tile_red"
+      android:strokeColor="@color/tile_red_dark"
       android:strokeLineCap="round"/>
 </vector>

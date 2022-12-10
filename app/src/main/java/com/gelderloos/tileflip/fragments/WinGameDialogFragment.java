@@ -47,15 +47,15 @@ public class WinGameDialogFragment extends DialogFragment {
         Party winParty = new PartyFactory(emitterConfig)
                 .spread(360)
                 .shapes(Arrays.asList(Shape.Square.INSTANCE, Shape.Circle.INSTANCE))
-                .colors(Arrays.asList(0xfc0606,0xb300ff,0x073cf8,0x2ad52a,0xfff300,0xff8e00))
+                .colors(Arrays.asList(R.integer.tile_red,R.integer.tile_purple,R.integer.tile_blue,R.integer.tile_green,R.integer.tile_yellow,R.integer.tile_orange))
                 .setSpeedBetween(0f, 30f)
                 .position(new Position.Relative(0.5, 0.1))
                 .build();
         TextView scoreLabel = congratsView.findViewById(R.id.textViewScoreLabel);
         if(newHighScore) {
             scoreLabel.setText(R.string.newHighScoreLabel);
-            konfettiView.start(winParty);
         } else scoreLabel.setText(R.string.finalScoreLabel);
+        konfettiView.start(winParty);
         TextView finalScore = congratsView.findViewById(R.id.textViewFinalScore);
         finalScore.setText(getString(R.string.finalScore,score));
         int easyHighScore = preferences.getInt("HIGH_SCORE_EASY_TAG",0);

@@ -8,20 +8,20 @@
       android:strokeAlpha="0"
       android:strokeLineJoin="bevel"
       android:strokeWidth="0.661"
-      android:fillColor="#7a6d5d"
+      android:fillColor="@color/tile_shadow"
       android:strokeLineCap="round"/>
   <path
       android:pathData="M1.108,0.066L14.569,0.066A1.042,1.042 0,0 1,15.61 1.108L15.61,19.86A1.042,1.042 0,0 1,14.569 20.902L1.108,20.902A1.042,1.042 0,0 1,0.066 19.86L0.066,1.108A1.042,1.042 0,0 1,1.108 0.066z"
       android:strokeLineJoin="bevel"
       android:strokeWidth="0.06693958"
       android:fillColor="#FFFFFF"
-      android:strokeColor="#c026c0"
+      android:strokeColor="@color/tile_back_spiral"
       android:strokeLineCap="round"/>
   <path
       android:pathData="m7.492,9.781c-0.226,0.241 -0.436,-0.185 -0.4,-0.375C7.188,8.893 7.839,8.789 8.242,8.981 8.962,9.324 9.076,10.272 8.693,10.906 8.13,11.836 6.851,11.963 5.992,11.382 4.849,10.608 4.71,8.987 5.491,7.907 6.473,6.548 8.441,6.398 9.741,7.38 11.316,8.57 11.478,10.885 10.293,12.405 8.897,14.197 6.232,14.37 4.493,12.983 2.485,11.381 2.3,8.366 3.89,6.408 5.697,4.182 9.063,3.985 11.24,5.779 13.683,7.791 13.891,11.509 11.894,13.905 9.677,16.565 5.608,16.785 2.994,14.584"
       android:strokeWidth="0.791"
       android:fillColor="#00000000"
-      android:strokeColor="#c026c0"
+      android:strokeColor="@color/tile_back_spiral"
       android:fillType="evenOdd"
       android:strokeLineCap="round"/>
 </vector>

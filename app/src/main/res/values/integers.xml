@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="tile_red">0xfc0606</integer>
+    <integer name="tile_purple">0xb300ff</integer>
+    <integer name="tile_blue">0x073cf8</integer>
+    <integer name="tile_green">0x2ad52a</integer>
+    <integer name="tile_yellow">0xfff300</integer>
+    <integer name="tile_orange">0xff8e00</integer>
+</resources>

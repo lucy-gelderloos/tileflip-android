@@ -9,13 +9,13 @@
       android:strokeLineJoin="bevel"
       android:strokeWidth="0.0669396"
       android:fillColor="#ffffff"
-      android:strokeColor="#502c50"
+      android:strokeColor="@color/tile_border"
       android:strokeLineCap="round"/>
   <path
       android:pathData="M11.102,14.09 L3.402,11.87 9.237,6.521Z"
       android:strokeLineJoin="bevel"
       android:strokeWidth="0.282"
-      android:fillColor="#fff300"
-      android:strokeColor="#948d00"
+      android:fillColor="@color/tile_yellow"
+      android:strokeColor="@color/tile_yellow_dark"
       android:strokeLineCap="round"/>
 </vector>

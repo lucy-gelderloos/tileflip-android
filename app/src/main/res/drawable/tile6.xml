@@ -8,34 +8,34 @@
       android:strokeAlpha="0"
       android:strokeLineJoin="bevel"
       android:strokeWidth="0.661"
-      android:fillColor="#7a6d5d"
+      android:fillColor="@color/tile_shadow"
       android:strokeLineCap="round"/>
   <path
       android:pathData="M1.141,0.1H14.602c0.577,0 1.042,0.465 1.042,1.042V19.894c0,0.577 -0.465,1.042 -1.042,1.042H1.141c-0.577,0 -1.042,-0.465 -1.042,-1.042V1.141c0,-0.577 0.465,-1.042 1.042,-1.042z"
       android:strokeLineJoin="bevel"
       android:strokeWidth="0.0669396"
       android:fillColor="#ffffff"
-      android:strokeColor="#502c50"
+      android:strokeColor="@color/tile_border"
       android:strokeLineCap="round"/>
   <path
       android:pathData="M9.88,5.388A1.947,1.947 0,0 1,7.933 7.334,1.947 1.947,0 0,1 5.987,5.388 1.947,1.947 0,0 1,7.933 3.441,1.947 1.947,0 0,1 9.88,5.388Z"
       android:strokeLineJoin="bevel"
       android:strokeWidth="0.132292"
-      android:fillColor="#b300ff"
-      android:strokeColor="#4f006f"
+      android:fillColor="@color/tile_purple"
+      android:strokeColor="@color/tile_purple_dark"
       android:strokeLineCap="round"/>
   <path
       android:pathData="M9.891,10.618A1.947,1.947 0,0 1,7.944 12.565,1.947 1.947,0 0,1 5.998,10.618 1.947,1.947 0,0 1,7.944 8.672,1.947 1.947,0 0,1 9.891,10.618Z"
       android:strokeLineJoin="bevel"
       android:strokeWidth="0.132292"
-      android:fillColor="#b300ff"
-      android:strokeColor="#4f006f"
+      android:fillColor="@color/tile_purple"
+      android:strokeColor="@color/tile_purple_dark"
       android:strokeLineCap="round"/>
   <path
       android:pathData="M9.891,15.967A1.947,1.947 0,0 1,7.944 17.913,1.947 1.947,0 0,1 5.998,15.967 1.947,1.947 0,0 1,7.944 14.02,1.947 1.947,0 0,1 9.891,15.967Z"
       android:strokeLineJoin="bevel"
       android:strokeWidth="0.132292"
-      android:fillColor="#b300ff"
-      android:strokeColor="#4f006f"
+      android:fillColor="@color/tile_purple"
+      android:strokeColor="@color/tile_purple_dark"
       android:strokeLineCap="round"/>
 </vector>
