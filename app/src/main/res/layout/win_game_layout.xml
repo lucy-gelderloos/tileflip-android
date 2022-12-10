@@ -38,23 +38,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewScoreLabel" />
 
-    <TextView
-        android:id="@+id/textViewWinGameTableTitle"
-        style="@style/WinGameDialogText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/lato_black"
-        android:text="@string/highScoreTableTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewFinalScore" />
-
     <TableLayout
         android:id="@+id/tableLayoutHighScores"
         style="@style/HighScoreTable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewWinGameTableTitle">
+        app:layout_constraintTop_toBottomOf="@id/textViewFinalScore">
 
         <TableRow>
 

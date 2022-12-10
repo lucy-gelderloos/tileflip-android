@@ -30,8 +30,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:orientation="horizontal"
             android:background="@drawable/inner_shadow_background_landscape"
+            android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -40,11 +40,11 @@
                 android:id="@+id/radioButtonMainActivityEasyButton"
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
-                android:padding="4dp"
                 android:background="@drawable/difficulty_radio_background"
                 android:button="@android:color/transparent"
                 android:checked="true"
                 android:onClick="onRadioButtonClicked"
+                android:padding="4dp"
                 android:text="@string/difficulty_easy"
                 android:textAlignment="center" />
 
@@ -52,10 +52,10 @@
                 android:id="@+id/radioButtonMainActivityMediumButton"
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
-                android:padding="4dp"
                 android:background="@drawable/difficulty_radio_background"
                 android:button="@android:color/transparent"
                 android:onClick="onRadioButtonClicked"
+                android:padding="4dp"
                 android:text="@string/difficulty_medium"
                 android:textAlignment="center" />
 
@@ -63,28 +63,24 @@
                 android:id="@+id/radioButtonMainActivityHardButton"
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
-                android:padding="4dp"
-                android:button="@android:color/transparent"
                 android:background="@drawable/difficulty_radio_background"
+                android:button="@android:color/transparent"
                 android:onClick="onRadioButtonClicked"
+                android:padding="4dp"
                 android:text="@string/difficulty_hard"
                 android:textAlignment="center" />
-
-
         </RadioGroup>
 
         <Button
             android:id="@+id/buttonMainActivityNewGame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:layout_marginEnd="4dp"
-            android:layout_marginBottom="4dp"
-            android:elevation="50dp"
             android:text="@string/new_game"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/radioGroupMainActivityDifficultyButtons"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toEndOf="@+id/radioGroupMainActivityDifficultyButtons"
+            app:layout_constraintTop_toTopOf="@+id/radioGroupMainActivityDifficultyButtons" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
