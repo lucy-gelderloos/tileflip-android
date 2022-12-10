@@ -76,10 +76,10 @@ public class MainActivity extends AppCompatActivity {
         discardPile = findViewById(R.id.imageViewDiscardPileTile);
         discardedTile = findViewById(R.id.imageViewDiscardedTile);
         context = this.getApplicationContext();
-        difficultyGroup = (RadioGroup) findViewById(R.id.radioGroupDifficultyMain);
-        RadioButton easyRadio = findViewById(R.id.radioButtonEasyMain);
-        RadioButton mediumRadio = findViewById(R.id.radioButtonMediumMain);
-        RadioButton hardRadio = findViewById(R.id.radioButtonHardMain);
+        difficultyGroup = findViewById(R.id.radioGroupMainActivityDifficultyButtons);
+        RadioButton easyRadio = findViewById(R.id.radioButtonMainActivityEasyButton);
+        RadioButton mediumRadio = findViewById(R.id.radioButtonMainActivityMediumButton);
+        RadioButton hardRadio = findViewById(R.id.radioButtonMainActivityHardButton);
         switch (difficulty) {
             case 24:
                 easyRadio.setChecked(false);
@@ -114,8 +114,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onRadioButtonClicked(View view) {
-        int mediumId = R.id.radioButtonMediumMain;
-        int hardId = R.id.radioButtonHardMain;
+        int mediumId = R.id.radioButtonMainActivityMediumButton;
+        int hardId = R.id.radioButtonMainActivityHardButton;
         int selectedId = difficultyGroup.getCheckedRadioButtonId();
         difficultyRadioButton = findViewById(selectedId);
         if(selectedId == mediumId) {
@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setUpNewGameButton() {
-        Button newGameButton = findViewById(R.id.buttonNewGameMain);
+        Button newGameButton = findViewById(R.id.buttonMainActivityNewGame);
         newGameButton.setOnClickListener(view -> startNewGame());
     }
 

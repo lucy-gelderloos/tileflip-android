@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+<!--    tile colors in integer form for Konfetti PartyFactory   -->
     <integer name="tile_red">0xfc0606</integer>
     <integer name="tile_purple">0xb300ff</integer>
     <integer name="tile_blue">0x073cf8</integer>
