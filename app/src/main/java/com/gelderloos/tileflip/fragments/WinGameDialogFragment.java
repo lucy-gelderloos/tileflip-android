@@ -47,7 +47,7 @@ public class WinGameDialogFragment extends DialogFragment {
         Party winParty = new PartyFactory(emitterConfig)
                 .spread(360)
                 .shapes(Arrays.asList(Shape.Square.INSTANCE, Shape.Circle.INSTANCE))
-                .colors(Arrays.asList(R.integer.tile_red,R.integer.tile_purple,R.integer.tile_blue,R.integer.tile_green,R.integer.tile_yellow,R.integer.tile_orange))
+                .colors(Arrays.asList(0xfc0606,0xb300ff,0x073cf8,0x2ad52a,0xfff300,0xff8e00))
                 .setSpeedBetween(0f, 30f)
                 .position(new Position.Relative(0.5, 0.1))
                 .build();
