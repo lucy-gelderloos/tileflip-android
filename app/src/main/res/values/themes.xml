@@ -51,7 +51,7 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-<!--    <style name="Theme.TileFlip.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />-->
+    <style name="Theme.TileFlip.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.TileFlip.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
