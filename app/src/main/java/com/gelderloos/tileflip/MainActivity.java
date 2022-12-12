@@ -23,6 +23,11 @@ import android.widget.TextView;
 import com.gelderloos.tileflip.adapters.TileGridViewAdapter;
 import com.gelderloos.tileflip.fragments.InstructionsFragment;
 import com.gelderloos.tileflip.fragments.WinGameDialogFragment;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String HIGH_SCORE_MEDIUM_TAG = "HIGH_SCORE_MEDIUM_TAG";
     public static final String HIGH_SCORE_HARD_TAG = "HIGH_SCORE_HARD_TAG";
     public static final String DIFFICULTY_TAG = "DIFFICULTY_TAG";
+    private AdView mAdView;
 
     SharedPreferences preferences;
     Context context;
@@ -68,6 +74,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         if(preferences.contains(DIFFICULTY_TAG)) {
             difficulty = preferences.getInt(DIFFICULTY_TAG,16);

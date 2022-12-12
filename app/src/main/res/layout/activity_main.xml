@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-<androidx.constraintlayout.widget.ConstraintLayout
+
+    <ScrollView
+        android:id="@+id/scrollViewMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".MainActivity"
@@ -244,5 +254,23 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </ScrollView>
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollViewMain">
+    </com.google.android.gms.ads.AdView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
