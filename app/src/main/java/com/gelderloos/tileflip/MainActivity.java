@@ -118,14 +118,14 @@ public class MainActivity extends AppCompatActivity {
 
         setUpNewGameButton();
         setUpInstructionsButton();
-//        resetHighScores();
+        resetHighScores();
     }
 
     public void resetHighScores() {
         SharedPreferences.Editor preferenceEditor = preferences.edit();
-        preferenceEditor.putInt(HIGH_SCORE_EASY_TAG,0);
-        preferenceEditor.putInt(HIGH_SCORE_MEDIUM_TAG,0);
-        preferenceEditor.putInt(HIGH_SCORE_HARD_TAG,0);
+        preferenceEditor.putInt(HIGH_SCORE_EASY_TAG,330);
+        preferenceEditor.putInt(HIGH_SCORE_MEDIUM_TAG,950);
+        preferenceEditor.putInt(HIGH_SCORE_HARD_TAG,1420);
         preferenceEditor.apply();
     }
 
